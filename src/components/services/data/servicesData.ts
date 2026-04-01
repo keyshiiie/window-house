@@ -11,28 +11,45 @@ export const servicesData: Services[] = [
         fullDescription: 'Профессиональное остекление балконов и лоджий любой сложности. Используем современные профильные системы Rehau, KBE, Proplex. Возможность выноса остекления за перила для увеличения полезной площади.',
         price: 'от 25 000 ₽',
         images: [
-            '/images/balcony-1.jpg',
-            '/images/balcony-2.jpg',
-            '/images/balcony-3.jpg'
+            '/images/services-slider-mock-1.jpg',
+            '/images/services-slider-mock-1.jpg',
+            '/images/services-slider-mock-1.jpg',
         ],
         features: [
             {
                 id: 1,
-                title: 'Теплое остекление',
-                description: 'Многокамерные профили, энергосберегающие стеклопакеты',
-                icon: '/icons/warm-glazing.svg'
+                title: 'Пластиковые окна',
+                description: 'Использование ламинационных окон, ламинации в массе, 3д-ламинации, а также покраска окон.',
+                icon: '/icons/services-details-icon-1.svg'
             },
             {
                 id: 2,
-                title: 'Холодное остекление',
-                description: 'Алюминиевые профили, раздвижные системы',
-                icon: '/icons/cold-glazing.svg'
+                title: 'Подоконники',
+                description: 'Качественный подоконник не царапается, выдерживает большие нагрузки и будет служить вам долгие годы. ',
+                icon: '/icons/services-details-icon-1.svg'
             },
             {
                 id: 3,
-                title: 'Вынос за перила',
-                description: 'Увеличение площади балкона до 30 см',
-                icon: '/icons/extension.svg'
+                title: 'Проветриватели',
+                description: 'Постоянное обновление воздуха в комнате снижает риск аллергии, улучшает сон и благоприятно влияет на самочувствие. ',
+                icon: '/icons/services-details-icon-2.svg'
+            },
+            {
+                id: 4,
+                title: 'Ламинация',
+                description: 'Пластиковые окна могут быть любого нужного вам цвета. Внутри и снаружи. ',
+                icon: '/icons/services-details-icon-2.svg'
+            },
+            {
+                id: 5,
+                title: 'Цветные ручки',
+                description: 'Оригинальные оконные ручки подчеркнут дизайн окна. Подберем оптимальный цвет ручек в зависимости от цвета всей конструкции.',
+                icon: '/icons/services-details-icon-5.svg'
+            },{
+                id: 6,
+                title: 'Москитные сетки',
+                description: 'Нежеланные насекомые останутся на улице, а ваша кошка - в квартире. Устанавливаем сетки для пластиковых окон любых форм и размеров.',
+                icon: '/icons/services-details-icon-6.svg'
             }
         ]
     },
@@ -45,28 +62,45 @@ export const servicesData: Services[] = [
         fullDescription: 'Профессиональное остекление балконов и лоджий любой сложности. Используем современные профильные системы Rehau, KBE, Proplex. Возможность выноса остекления за перила для увеличения полезной площади.',
         price: 'от 25 000 ₽',
         images: [
-            '/images/balcony-1.jpg',
-            '/images/balcony-2.jpg',
-            '/images/balcony-3.jpg'
+            '/images/services-slider-mock-2.jpg',
+            '/images/services-slider-mock-2.jpg',
+            '/images/services-slider-mock-2.jpg',
         ],
         features: [
             {
                 id: 1,
-                title: 'Теплое остекление',
-                description: 'Многокамерные профили, энергосберегающие стеклопакеты',
-                icon: '/icons/warm-glazing.svg'
+                title: 'Пластиковые окна',
+                description: 'Использование ламинационных окон, ламинации в массе, 3д-ламинации, а также покраска окон.',
+                icon: '/icons/services-details-icon-1.svg'
             },
             {
                 id: 2,
-                title: 'Холодное остекление',
-                description: 'Алюминиевые профили, раздвижные системы',
-                icon: '/icons/cold-glazing.svg'
+                title: 'Подоконники',
+                description: 'Качественный подоконник не царапается, выдерживает большие нагрузки и будет служить вам долгие годы. ',
+                icon: '/icons/services-details-icon-2.svg'
             },
             {
                 id: 3,
-                title: 'Вынос за перила',
-                description: 'Увеличение площади балкона до 30 см',
-                icon: '/icons/extension.svg'
+                title: 'Проветриватели',
+                description: 'Постоянное обновление воздуха в комнате снижает риск аллергии, улучшает сон и благоприятно влияет на самочувствие. ',
+                icon: '/icons/services-details-icon-3.svg'
+            },
+            {
+                id: 4,
+                title: 'Ламинация',
+                description: 'Пластиковые окна могут быть любого нужного вам цвета. Внутри и снаружи. ',
+                icon: '/icons/services-details-icon-1.svg'
+            },
+            {
+                id: 5,
+                title: 'Цветные ручки',
+                description: 'Оригинальные оконные ручки подчеркнут дизайн окна. Подберем оптимальный цвет ручек в зависимости от цвета всей конструкции.',
+                icon: '/icons/services-details-icon-2.svg'
+            },{
+                id: 6,
+                title: 'Москитные сетки',
+                description: 'Нежеланные насекомые останутся на улице, а ваша кошка - в квартире. Устанавливаем сетки для пластиковых окон любых форм и размеров.',
+                icon: '/icons/services-details-icon-1.svg'
             }
         ]
     },
@@ -79,28 +113,45 @@ export const servicesData: Services[] = [
         fullDescription: 'Профессиональное остекление балконов и лоджий любой сложности. Используем современные профильные системы Rehau, KBE, Proplex. Возможность выноса остекления за перила для увеличения полезной площади.',
         price: 'от 25 000 ₽',
         images: [
-            '/images/balcony-1.jpg',
-            '/images/balcony-2.jpg',
-            '/images/balcony-3.jpg'
+            '/images/services-slider-mock-3.jpg',
+            '/images/services-slider-mock-3.jpg',
+            '/images/services-slider-mock-3.jpg',
         ],
         features: [
             {
                 id: 1,
-                title: 'Теплое остекление',
-                description: 'Многокамерные профили, энергосберегающие стеклопакеты',
-                icon: '/icons/warm-glazing.svg'
+                title: 'Пластиковые окна',
+                description: 'Использование ламинационных окон, ламинации в массе, 3д-ламинации, а также покраска окон.',
+                icon: '/icons/services-details-icon-1.svg'
             },
             {
                 id: 2,
-                title: 'Холодное остекление',
-                description: 'Алюминиевые профили, раздвижные системы',
-                icon: '/icons/cold-glazing.svg'
+                title: 'Подоконники',
+                description: 'Качественный подоконник не царапается, выдерживает большие нагрузки и будет служить вам долгие годы. ',
+                icon: '/icons/services-details-icon-2.svg'
             },
             {
                 id: 3,
-                title: 'Вынос за перила',
-                description: 'Увеличение площади балкона до 30 см',
-                icon: '/icons/extension.svg'
+                title: 'Проветриватели',
+                description: 'Постоянное обновление воздуха в комнате снижает риск аллергии, улучшает сон и благоприятно влияет на самочувствие. ',
+                icon: '/icons/services-details-icon-3.svg'
+            },
+            {
+                id: 4,
+                title: 'Ламинация',
+                description: 'Пластиковые окна могут быть любого нужного вам цвета. Внутри и снаружи. ',
+                icon: '/icons/services-details-icon-1.svg'
+            },
+            {
+                id: 5,
+                title: 'Цветные ручки',
+                description: 'Оригинальные оконные ручки подчеркнут дизайн окна. Подберем оптимальный цвет ручек в зависимости от цвета всей конструкции.',
+                icon: '/icons/services-details-icon-2.svg'
+            },{
+                id: 6,
+                title: 'Москитные сетки',
+                description: 'Нежеланные насекомые останутся на улице, а ваша кошка - в квартире. Устанавливаем сетки для пластиковых окон любых форм и размеров.',
+                icon: '/icons/services-details-icon-1.svg'
             }
         ]
     },
@@ -113,28 +164,45 @@ export const servicesData: Services[] = [
         fullDescription: 'Профессиональное остекление балконов и лоджий любой сложности. Используем современные профильные системы Rehau, KBE, Proplex. Возможность выноса остекления за перила для увеличения полезной площади.',
         price: 'от 25 000 ₽',
         images: [
-            '/images/balcony-1.jpg',
-            '/images/balcony-2.jpg',
-            '/images/balcony-3.jpg'
+            '/images/services-slider-mock-4.jpg',
+            '/images/services-slider-mock-4.jpg',
+            '/images/services-slider-mock-4.jpg',
         ],
         features: [
             {
                 id: 1,
-                title: 'Теплое остекление',
-                description: 'Многокамерные профили, энергосберегающие стеклопакеты',
-                icon: '/icons/warm-glazing.svg'
+                title: 'Пластиковые окна',
+                description: 'Использование ламинационных окон, ламинации в массе, 3д-ламинации, а также покраска окон.',
+                icon: '/icons/services-details-icon-1.svg'
             },
             {
                 id: 2,
-                title: 'Холодное остекление',
-                description: 'Алюминиевые профили, раздвижные системы',
-                icon: '/icons/cold-glazing.svg'
+                title: 'Подоконники',
+                description: 'Качественный подоконник не царапается, выдерживает большие нагрузки и будет служить вам долгие годы. ',
+                icon: '/icons/services-details-icon-2.svg'
             },
             {
                 id: 3,
-                title: 'Вынос за перила',
-                description: 'Увеличение площади балкона до 30 см',
-                icon: '/icons/extension.svg'
+                title: 'Проветриватели',
+                description: 'Постоянное обновление воздуха в комнате снижает риск аллергии, улучшает сон и благоприятно влияет на самочувствие. ',
+                icon: '/icons/services-details-icon-3.svg'
+            },
+            {
+                id: 4,
+                title: 'Ламинация',
+                description: 'Пластиковые окна могут быть любого нужного вам цвета. Внутри и снаружи. ',
+                icon: '/icons/services-details-icon-4.svg'
+            },
+            {
+                id: 5,
+                title: 'Цветные ручки',
+                description: 'Оригинальные оконные ручки подчеркнут дизайн окна. Подберем оптимальный цвет ручек в зависимости от цвета всей конструкции.',
+                icon: '/icons/services-details-icon-2.svg'
+            },{
+                id: 6,
+                title: 'Москитные сетки',
+                description: 'Нежеланные насекомые останутся на улице, а ваша кошка - в квартире. Устанавливаем сетки для пластиковых окон любых форм и размеров.',
+                icon: '/icons/services-details-icon-1.svg'
             }
         ]
     },

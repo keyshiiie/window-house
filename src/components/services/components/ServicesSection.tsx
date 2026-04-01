@@ -1,30 +1,56 @@
-// src/components/service/components/ServicesSection.tsx
-import React from 'react';
+// src/components/services/components/ServicesSection.tsx
+import React, { useState } from 'react';
 import { servicesData } from '../data/servicesData';
-import ServiceCard from './ServiceCard'; 
+import ServiceCard from './ServiceCard';
+import ServiceDetailModal from '../ServiceDetailModal';
+import type { Services } from '../types/Services';
 import styles from '../services.module.scss';
 
 interface ServicesSectionProps {
     title?: string;
-    subtitle?: string;
 }
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({ 
     title = "Наши услуги",
 }) => {
+    const [selectedService, setSelectedService] = useState<Services | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleOpenModal = (service: Services) => {
+        setSelectedService(service);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setSelectedService(null);
+    };
+
     return (
-        <section className={styles.services} id='services'>
-            <div className="container">
-                <div className={styles.services__header}>
-                    <h2 className={styles.services__title}>{title}</h2>
+        <>
+            <section className={styles.services} id='services'>
+                <div className="container">
+                    <div className={styles.services__header}>
+                        <h2 className={styles.services__title}>{title}</h2>
+                    </div>
+                    <div className={styles.services__grid}>
+                        {servicesData.map(service => (
+                            <ServiceCard 
+                                key={service.id} 
+                                service={service} 
+                                onOpenModal={handleOpenModal}
+                            />
+                        ))}
+                    </div>
                 </div>
-                <div className={styles.services__grid}>
-                    {servicesData.map(service => (
-                        <ServiceCard key={service.id} service={service} />
-                    ))}
-                </div>
-            </div>
-        </section>
+            </section>
+
+            <ServiceDetailModal 
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+                service={selectedService}
+            />
+        </>
     );
 };
 

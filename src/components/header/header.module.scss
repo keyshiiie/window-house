@@ -1,6 +1,7 @@
 // src/components/header/header.module.scss
 @use '../../scss/abstracts/variables' as *;
 @use '../../scss/abstracts/mixins' as *;
+@use '../../scss/abstracts/placeholders' as *;
 
 .header {
     position: fixed; // меняем с relative на fixed
@@ -65,23 +66,12 @@
         }
     }
 
-    &__application-button, 
-    &__calculation-button {
-        padding: 10px 20px;
-        transition: $transition-slow;
-        justify-content: center;
-        border: none;
-        cursor: pointer;
-    }
-
     &__application-button {
-        @include button-fill($color-primary, $color-primary-dark);
-        @include button-with-icon('/public/icons/application-btn-icon.svg');
+        @extend %application-button;
     }
 
     &__calculation-button {
-        @include button-fill($color-secondary, $color-secondary-dark);
-        @include button-with-icon('/public/icons/calculation-btn-icon.svg');
+        @extend %calculation-button;
     }
 
     &__burger {

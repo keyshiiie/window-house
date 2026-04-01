@@ -1,0 +1,73 @@
+// src/components/ui/FormModal.module.scss
+@use '../../scss/abstracts/variables' as *;
+@use '../../scss/abstracts/mixins' as *;
+
+.formModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease;
+}
+
+.formModalContent {
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    
+    @media (max-width: $breakpoint-tablet) {
+        width: 95%;
+    }
+}
+
+// Кнопка закрытия
+.formModalClose {
+    position: sticky;
+    top: 20px;
+    float: right;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all $transition-slow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 10;
+    
+    img {
+        width: 20px;
+        height: 20px;
+        transition: $transition-slow;
+    }
+    
+    &:hover {
+        background: rgba(255, 255, 255, 0.2);
+        
+        img {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

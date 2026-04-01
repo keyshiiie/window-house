@@ -1,312 +1,457 @@
 // src/components/services/serviceDetail.module.scss
 @use '../../scss/abstracts/variables' as *;
 @use '../../scss/abstracts/mixins' as *;
+@use '../../scss/abstracts/placeholders' as *;
 
-.serviceDetail {
-    padding: 120px 0 80px;
-    
-    @media (max-width: $breakpoint-tablet) {
-        padding: 100px 0 50px;
-    }
-}
+.serviceDetailModal{
+    padding: 50px 100px;
+    background-color: $color-white;
 
-// Хлебные крошки
-.breadcrumbs {
-    margin-bottom: $gap-base;
-    font-size: $font-size-sm;
-    color: $color-gray-200;
-    
-    a {
-        color: $color-primary;
-        text-decoration: none;
-        
-        &:hover {
-            text-decoration: underline;
-        }
+    &__top{
+        @include flex(space-between, center);
+        column-gap: $gap-xxl;
+        margin-bottom: $gap-base;
     }
-    
-    span {
-        margin: 0 $gap-xss;
-    }
-    
-    .current {
-        color: $color-gray-200;
-    }
-}
 
-// Заголовок
-.serviceDetail__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: $gap-xl;
-    margin-bottom: $gap-xl;
-    
-    @media (max-width: $breakpoint-tablet) {
-        flex-direction: column;
-        gap: $gap-base;
-    }
-}
-
-.serviceDetail__info {
-    flex: 1;
-}
-
-.serviceDetail__title {
-    @include font-style(bold, xxxl);
-    color: $color-secondary;
-    margin-bottom: $gap-sm;
-    
-    @media (max-width: $breakpoint-tablet) {
-        font-size: $font-size-xxl;
-    }
-}
-
-.serviceDetail__description {
-    @include font-style(regular, base);
-    color: $color-gray-200;
-    line-height: $line-height-loose;
-    margin-bottom: $gap-base;
-    max-width: 600px;
-}
-
-.serviceDetail__price {
-    @include font-style(bold, xl);
-    color: $color-primary;
-    margin-bottom: $gap-base;
-}
-
-.serviceDetail__icon {
-    width: 120px;
-    height: 120px;
-    
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-    
-    @media (max-width: $breakpoint-tablet) {
-        width: 80px;
-        height: 80px;
-    }
-}
-
-// Кнопки
-.requestButtons {
-    display: flex;
-    gap: $gap-sm;
-    
-    @media (max-width: $breakpoint-tablet) {
-        flex-direction: column;
-    }
-    
-    &__measure,
-    &__calculation {
-        padding: 12px 24px;
-        border: none;
-        border-radius: $border-radius-md;
-        cursor: pointer;
-        transition: $transition-slow;
-        font-size: $font-size-base;
-        
-        @media (max-width: $breakpoint-tablet) {
-            width: 100%;
-        }
-    }
-    
-    &__measure {
-        @include button-fill($color-primary, $color-primary-dark);
-    }
-    
-    &__calculation {
-        @include button-fill($color-secondary, $color-secondary-dark);
-    }
-}
-
-// Слайдер
-.slider {
-    margin: $gap-xl 0;
-    
-    &__main {
-        border-radius: $border-radius-lg;
-        overflow: hidden;
-        aspect-ratio: 16 / 9;
-    }
-    
-    &__image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-}
-
-// Карточки видов работ
-.features {
-    margin-top: $gap-xl;
-    
-    &__title {
-        @include font-style(bold, xxl);
-        color: $color-secondary;
-        text-align: center;
-        margin-bottom: $gap-xl;
-        
-        @media (max-width: $breakpoint-tablet) {
-            font-size: $font-size-xl;
-            margin-bottom: $gap-base;
-        }
-    }
-    
-    &__grid {
+    &__header{
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: $gap-base;
-        
-        @media (max-width: $breakpoint-tablet) {
-            grid-template-columns: 1fr;
-            gap: $gap-sm;
-        }
+        row-gap: $gap-sm;
+        flex: 1;
     }
-}
 
-.featureCard {
-    text-align: center;
-    padding: $gap-base;
-    background: $color-white;
-    border-radius: $border-radius-lg;
-    transition: $transition-slow;
-    box-shadow: $shadow-sm;
-    
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: $shadow-md;
+    &__title{
+        @include font-style(bold, xl);
+        color: $color-secondary;
     }
     
-    &__icon {
-        width: 60px;
-        height: 60px;
-        margin: 0 auto $gap-sm;
-        
+    &__description{
+        @include font-style(regular, base);
+        color: $color-black;
+        max-width: 500px;
+    }
+
+    &__buttons{
+        display: flex;
+        column-gap: $gap-xxs;
+    }
+    
+    &__applicationButton{
+        @extend %application-button;
+    }
+
+    &__calculationButton{
+        @extend %calculation-button;
+    }
+
+    // Секция с дополнительными возможностями
+    &__features {
+        margin-top: $gap-xl;
+    }
+
+    &__featuresTitle {
+        @include font-style(bold, lg);
+        color: $color-secondary;
+        margin-bottom: $gap-base;
+    }
+
+    &__featuresGrid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: $gap-base;
+    }
+
+    // Карточка - фиксированная структура
+    &__featureCard{
+        display: flex;
+        align-items: center;
+        gap: $gap-xxs;
+        min-height: 90px; // фиксированная минимальная высота
+    }
+
+    // Контейнер для иконки - фиксированный размер
+    &__featureIcon{
+        width: 70px;      // фиксированная ширина
+        height: 70px;     // фиксированная высота
+        flex-shrink: 0;   // запрещаем сжиматься
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         img {
             width: 100%;
             height: 100%;
             object-fit: contain;
         }
     }
-    
-    &__title {
-        @include font-style(bold, lg);
-        color: $color-secondary;
-        margin-bottom: $gap-xs;
-        
-        @media (max-width: $breakpoint-tablet) {
-            font-size: $font-size-base;
-        }
+
+    // Контейнер для текста - занимает оставшееся пространство
+    &__featureContent {
+        flex: 1;
+        min-width: 0; // позволяет тексту переноситься
     }
-    
-    &__description {
+
+    &__featureTitle{
+        @include font-style(bold, sm);
+        color: $color-secondary;
+        margin-bottom: $gap-xss;
+        line-height: $line-height-normal;
+    }
+
+    &__featureDescription{
         @include font-style(regular, sm);
-        color: $color-gray-200;
+        color: $color-black;
         line-height: $line-height-normal;
     }
 }
 
-// Модальное окно
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
+// Слайдер
+// Слайдер
+.slider {
+    margin: $gap-xl 0;
+    position: relative;
     
-    &__content {
-        background: $color-white;
-        padding: $gap-xl;
-        border-radius: $border-radius-lg;
-        max-width: 500px;
-        width: 90%;
+    &__main {
         position: relative;
+        cursor: pointer;
+        overflow: hidden;
         
-        @media (max-width: $breakpoint-tablet) {
-            padding: $gap-base;
+        &:hover {
+            .slider__prev,
+            .slider__next {
+                opacity: 1;
+            }
         }
     }
     
-    &__close {
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none; // Чтобы клики проходили на родительский элемент
+        display: block;
+    }
+    
+    // Кнопки навигации (стрелки)
+    &__prev,
+    &__next {
         position: absolute;
-        top: 15px;
-        right: 15px;
-        background: none;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
         border: none;
-        font-size: 24px;
+        border-radius: 50%;
         cursor: pointer;
-        color: $color-gray-200;
+        transition: $transition-slow;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        opacity: 0;
         
         &:hover {
-            color: $color-primary;
+            background: $color-primary;
+            transform: translateY(-50%) scale(1.05);
         }
+        
+        @media (max-width: $breakpoint-tablet) {
+            width: 32px;
+            height: 32px;
+            font-size: 18px;
+            opacity: 0.7;
+        }
+    }
+    
+    &__prev {
+        left: 20px;
+    }
+    
+    &__next {
+        right: 20px;
+    }
+    
+    // Кружочки (точки) - поверх слайдера
+    &__dots {
+        position: absolute;
+        bottom: 20px; // отступ снизу 20px от края слайда
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: $gap-xs;
+        z-index: 10;
+        margin: 0;
+        padding: 0;
+    }
+    
+    &__dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        border: none;
+        cursor: pointer;
+        transition: $transition-slow;
+        padding: 0;
+        
+        &:hover {
+            background: $color-primary;
+            transform: scale(1.2);
+        }
+        
+        &Active {
+            background: $color-primary;
+            width: 12px;
+            height: 12px;
+        }
+    }
+}
+
+// Форма вызова замерщика в модальном окне (с рулеткой)
+.formModalMeasure {
+    @extend %requestForm-without;
+    background-color: $color-primary;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    
+    @media (max-width: $breakpoint-tablet) {
+        max-width: 95%;
+        left: 0;
+        transform: none;
+        margin: 0 auto;
+    }
+    
+    &__closeButton {
+        @extend %form-close-button;
     }
     
     &__title {
-        @include font-style(bold, xl);
-        color: $color-secondary;
-        margin-bottom: $gap-xs;
+        @extend %requestForm-title;
+        color: $color-white;
         text-align: center;
-    }
-    
-    &__subtitle {
-        @include font-style(regular, sm);
-        color: $color-gray-100;
-        text-align: center;
-        margin-bottom: $gap-base;
+        position: relative;
+
     }
     
     &__form {
         display: flex;
         flex-direction: column;
-        gap: $gap-sm;
-        
-        input {
-            padding: 12px 15px;
-            border: 1px solid $color-gray-100;
-            border-radius: $border-radius-md;
-            font-size: $font-size-base;
-            
-            &:focus {
-                outline: none;
-                border-color: $color-primary;
-            }
+        gap: $gap-xxs;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    
+    &__field {
+        width: 100%;
+    }
+    
+    &__input,
+    &__textarea {
+        @extend %requestForm-input;
+    }
+    
+    &__inputError {
+        @extend %requestForm-inputError;
+    }
+    
+    &__error {
+        @extend %requestForm-error;
+    }
+    
+    &__agreement {
+        margin-top: $gap-xs;
+    }
+    
+    &__checkbox {
+        @extend %custom-checkbox;
+    }
+    
+    &__checkboxText {
+        @extend %checkbox-text;
+        color: $color-white;
+        text-align: left;
+        &:hover {
+            color: $color-secondary;
+        }
+        a {
+            color: $color-secondary;
         }
     }
     
     &__button {
-        @include button-fill($color-primary, $color-primary-dark);
-        padding: 12px;
-        cursor: pointer;
-        border: none;
-        border-radius: $border-radius-md;
-        font-size: $font-size-base;
+        @extend %requestForm-button;
+        @include button-fill($color-white, $color-gray-300, $color-secondary);
+        
+        &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
     }
 }
 
-.notFound {
-    text-align: center;
-    padding: 100px 0;
+
+// Форма заказа расчета
+.formModalCalculation {
+    @extend %requestForm-without;
+    background-color: $color-secondary;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
     
-    h2 {
-        margin-bottom: $gap-base;
+    @media (max-width: $breakpoint-tablet) {
+        max-width: 95%;
+        left: 0;
+        transform: none;
+        margin: 0 auto;
     }
     
-    button {
-        @include button-fill($color-primary, $color-primary-dark);
-        padding: 12px 24px;
-        cursor: pointer;
-        border: none;
-        border-radius: $border-radius-md;
+    &__closeButton {
+        @extend %form-close-button;
+    }
+    
+    &__title {
+        @extend %requestForm-title;
+        color: $color-white;
+        text-align: center;
+    }
+    
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-xxs;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    
+    &__field {
+        width: 100%;
+    }
+    
+    &__input,
+    &__textarea {
+        @extend %requestForm-input;
+    }
+    
+    &__inputError {
+        @extend %requestForm-inputError;
+    }
+    
+    &__error {
+        @extend %requestForm-error;
+    }
+    
+    &__agreement {
+        margin-top: $gap-xs;
+    }
+    
+    &__checkbox {
+        @extend %custom-checkbox;
+    }
+    
+    &__checkboxText {
+        @extend %checkbox-text;
+        color: $color-white;
+        text-align: left;
+        &:hover {
+            color: $color-primary;
+        }
+        a {
+            color: $color-primary;
+        }
+    }
+    
+    &__button {
+        @extend %requestForm-button;
+        @include button-fill($color-white, $color-gray-300, $color-secondary);
+        
+        &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+    }
+}
+
+%form-close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: $transition-slow;
+    color: $color-white;
+    
+    &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: rotate(90deg);
+    }
+}
+
+
+// Адаптив для планшетов
+@media (max-width: $breakpoint-tablet) {
+    .serviceDetailModal {
+        padding: 30px 20px;
+        
+        &__top {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $gap-base;
+        }
+        
+        &__buttons {
+            width: 100%;
+            
+            button {
+                flex: 1;
+            }
+        }
+        
+        &__featuresGrid {
+            grid-template-columns: 1fr;
+            gap: $gap-sm;
+        }
+        
+        &__featureCard {
+            min-height: auto;
+        }
+        
+        &__featureIcon {
+            width: 60px;
+            height: 60px;
+        }
+    }
+}
+
+// Адаптив для мобильных
+@media (max-width: $breakpoint-mobile) {
+    .serviceDetailModal {
+        padding: 20px 15px;
+        
+        &__featureIcon {
+            width: 50px;
+            height: 50px;
+        }
+        
+        &__featureTitle {
+            font-size: $font-size-xs;
+        }
+        
+        &__featureDescription {
+            font-size: $font-size-xs;
+        }
     }
 }

@@ -81,113 +81,27 @@
 
 // Форма заявки
 .requestForm {
-    background: $color-white;
-    padding: 40px 40px 70px;
-    border-radius: $border-radius-lg;
-    box-shadow: $shadow-md;
-    position: relative; 
-    overflow: visible;
-    
-    @media (max-width: $breakpoint-tablet) {
-        padding: $gap-sm;
-        margin-top: 40px;
-    }
-
-    // Картинка рулетки (поверх формы)
-    &::before {
-        content: '';
-        position: absolute;
-        bottom: -66px; // поднимаем выше формы
-        right: -58px; // выходим за правый край
-        width: 465px;
-        height: 180px;
-        background-image: url('/public/icons/ruler.svg');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        pointer-events: none;
-        z-index: 10;
-
-        filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.29));
-        
-        @media (max-width: $breakpoint-wide) {
-            width: 100px;
-            height: 100px;
-            top: -35px;
-            right: -25px;
-        }
-        
-        @media (max-width: $breakpoint-tablet) {
-            width: 80px;
-            height: 80px;
-            top: -40px;
-            right: 10px;
-        }
-    }
+    @extend %requestForm;
     
     &__title {
-        @include font-style(bold, md);
-        color: $color-secondary;
-        margin-bottom: $gap-base;
-        text-align: center;
-        
+        @extend %requestForm-title;
     }
     
     &__form {
-        display: flex;
-        flex-direction: column;
-        gap: $gap-xxs;
-        max-width: 320px;
-    }
-    
-    &__field {
-        width: 100%;
+        @extend %requestForm-form;
     }
     
     &__input,
     &__textarea {
-        width: 100%;
-        padding: 12px 15px;
-        background: $color-gray-300;
-        border: 1px solid $color-gray-300;
-        border-radius: $border-radius-md;
-        @include font-style(regular, sm);
-        color: $color-primary;
-        transition: $transition-fast;
-        
-        &:focus {
-            outline: none;
-            border-color: $color-primary;
-        }
-        
-        &:disabled {
-            background-color: $color-gray-100;
-            cursor: not-allowed;
-        }
-
-        &::placeholder{
-            color: $color-secondary-smooth;
-        }
+        @extend %requestForm-input;
     }
     
     &__inputError {
-        border-color: $color-error;
-        
-        &:focus {
-            border-color: $color-error;
-            box-shadow: 0 0 0 3px rgba($color-error, 0.1);
-        }
+        @extend %requestForm-inputError;
     }
     
     &__error {
-        color: $color-error;
-        font-size: $font-size-xs;
-        margin-top: $gap-xss;
-        display: block;
-    }
-    
-    // Стили для согласия
-    &__agreement {
+        @extend %requestForm-error;
     }
     
     &__checkbox {
@@ -199,17 +113,6 @@
     }
     
     &__button {
-        @include button-fill($color-primary, $color-primary-dark);
-        padding: 20px 40px;
-        margin-top: 10px;
-        cursor: pointer;
-        border: none;
-        width: auto;
-        align-self: center; // центрируем кнопку
-        
-        &:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
+        @extend %requestForm-button;
     }
 }

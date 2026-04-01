@@ -5,12 +5,12 @@ import styles from '../services.module.scss';
 
 interface ServiceCardProps {
     service: Services;
+    onOpenModal: (service: Services) => void;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ service, onOpenModal }) => {
     const handleClick = () => {
-        // Используем относительный путь с параметром
-        window.open(`/service.html?id=${service.id}`, '_blank');
+        onOpenModal(service);
     };
 
     return (
@@ -32,7 +32,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
                     {service.description}
                 </p>
                 <button className={styles.serviceCard__button}>
-                    <span className={styles.serviceCard__buttonText}>Подробнее</span>
                     <span className={styles.serviceCard__buttonIcon}></span>
                 </button>
             </div>

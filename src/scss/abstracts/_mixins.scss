@@ -1,4 +1,4 @@
-@use '../abstracts/variables' as *;
+@use './variables' as *;
 
 // Миксин для разных начертаний
 @mixin font-style($weight: light, $size: base) {
@@ -59,10 +59,7 @@
 @mixin button-fill($bg-color, $hover-color, $text-color: $color-white) {
     background: $bg-color;
     color: $text-color;
-    border: 2px solid $bg-color;
     @include font-style(bold, sm);
-    border-radius: $border-radius-md;
-    transition: $transition-slow;
     
     &:hover {
         background: $hover-color;
@@ -75,9 +72,6 @@
     display: inline-flex;
     align-items: center;
     gap: $gap-xs;
-    @include font-style(bold, sm);
-    transition: $transition-slow;
-    border-radius: $border-radius-md;
     
     &::before {
         content: '';

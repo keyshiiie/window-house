@@ -1,23 +1,31 @@
-// components/SubmitRequestForm.tsx
+// src/components/main/components/SubmitRequestForm.tsx
 import React, { useState } from 'react';
 import type { SubmitRequestFormData } from '../types/SubmitRequestFormData';
 import styles from '../main.module.scss';
+import serviceStyles from '../../services/serviceDetail.module.scss';
 
 interface SubmitRequestFormProps {
     onSubmit?: (data: SubmitRequestFormData) => void;
+    onClose?: () => void; // ← добавляем обратно onClose
     title?: string;
     buttonText?: string;
+    requestType?: 'measure' | 'calculation';
+    variant?: 'default' | 'measure' | 'calculation';
 }
 
 const SubmitRequestForm: React.FC<SubmitRequestFormProps> = ({ 
     onSubmit,
+    onClose, // ← добавляем в параметры
     title = "Вызвать замерщика на дом",
-    buttonText = "Отправить заявку"
+    buttonText = "Отправить заявку",
+    requestType,
+    variant = 'default'
 }) => {
     const [formData, setFormData] = useState<SubmitRequestFormData>({
         name: '',
         phone: '',
-        email: ''
+        email: '',
+        requestType: requestType
     });
     
     const [isAgreed, setIsAgreed] = useState(false);
@@ -56,7 +64,6 @@ const SubmitRequestForm: React.FC<SubmitRequestFormProps> = ({
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
-        // Проверка согласия
         if (!isAgreed) {
             alert('Необходимо согласие на обработку персональных данных');
             return;
@@ -67,21 +74,21 @@ const SubmitRequestForm: React.FC<SubmitRequestFormProps> = ({
         setIsSubmitting(true);
         
         try {
-            console.log('Отправка формы:', formData);
+            console.log('Отправка формы:', { ...formData, requestType });
             await new Promise(resolve => setTimeout(resolve, 1000));
             
-            // Отправляем только данные формы, без isAgreed
-            onSubmit?.(formData);
+            onSubmit?.({ ...formData, requestType });
             
-            // Очищаем форму
             setFormData({
                 name: '',
                 phone: '',
-                email: ''
+                email: '',
+                requestType: requestType
             });
             setIsAgreed(false);
             
-            alert('Заявка успешно отправлена!');
+            alert(`Заявка на ${requestType === 'measure' ? 'замер' : 'расчет'} успешно отправлена!`);
+            onClose?.(); // ← закрываем форму после отправки
         } catch (error) {
             console.error('Ошибка отправки:', error);
             alert('Произошла ошибка. Попробуйте позже.');
@@ -90,10 +97,56 @@ const SubmitRequestForm: React.FC<SubmitRequestFormProps> = ({
         }
     };
 
+    // Выбираем стили в зависимости от варианта
+    const getStyles = () => {
+        if (variant === 'measure') {
+            return {
+                container: serviceStyles.formModalMeasure,
+                title: serviceStyles.formModalMeasure__title,
+                form: serviceStyles.formModalMeasure__form,
+                input: serviceStyles.formModalMeasure__input,
+                inputError: serviceStyles.formModalMeasure__inputError,
+                error: serviceStyles.formModalMeasure__error,
+                checkbox: serviceStyles.formModalMeasure__checkbox,
+                checkboxText: serviceStyles.formModalMeasure__checkboxText,
+                button: serviceStyles.formModalMeasure__button
+            };
+        }
+        
+        if (variant === 'calculation') {
+            return {
+                container: serviceStyles.formModalCalculation,
+                title: serviceStyles.formModalCalculation__title,
+                form: serviceStyles.formModalCalculation__form,
+                input: serviceStyles.formModalCalculation__input,
+                inputError: serviceStyles.formModalCalculation__inputError,
+                error: serviceStyles.formModalCalculation__error,
+                checkbox: serviceStyles.formModalCalculation__checkbox,
+                checkboxText: serviceStyles.formModalCalculation__checkboxText,
+                button: serviceStyles.formModalCalculation__button
+            };
+        }
+        
+        // default (для главной страницы)
+        return {
+            container: styles.requestForm,
+            title: styles.requestForm__title,
+            form: styles.requestForm__form,
+            input: styles.requestForm__input,
+            inputError: styles.requestForm__inputError,
+            error: styles.requestForm__error,
+            checkbox: styles.requestForm__checkbox,
+            checkboxText: styles.requestForm__checkboxText,
+            button: styles.requestForm__button
+        };
+    };
+
+    const currentStyles = getStyles();
+
     return (
-        <div className={styles.requestForm}>
-            <h3 className={styles.requestForm__title}>{title}</h3>
-            <form onSubmit={handleSubmit} className={styles.requestForm__form}>
+        <div className={currentStyles.container}>
+            <h3 className={currentStyles.title}>{title}</h3>
+            <form onSubmit={handleSubmit} className={currentStyles.form}>
                 <div className={styles.requestForm__field}>
                     <input
                         type="text"
@@ -101,11 +154,11 @@ const SubmitRequestForm: React.FC<SubmitRequestFormProps> = ({
                         placeholder="Ваше имя*"
                         value={formData.name}
                         onChange={handleChange}
-                        className={`${styles.requestForm__input} ${errors.name ? styles.requestForm__inputError : ''}`}
+                        className={`${currentStyles.input} ${errors.name ? currentStyles.inputError : ''}`}
                         disabled={isSubmitting}
                     />
                     {errors.name && (
-                        <span className={styles.requestForm__error}>{errors.name}</span>
+                        <span className={currentStyles.error}>{errors.name}</span>
                     )}
                 </div>
                 
@@ -116,11 +169,11 @@ const SubmitRequestForm: React.FC<SubmitRequestFormProps> = ({
                         placeholder="Телефон*"
                         value={formData.phone}
                         onChange={handleChange}
-                        className={`${styles.requestForm__input} ${errors.phone ? styles.requestForm__inputError : ''}`}
+                        className={`${currentStyles.input} ${errors.phone ? currentStyles.inputError : ''}`}
                         disabled={isSubmitting}
                     />
                     {errors.phone && (
-                        <span className={styles.requestForm__error}>{errors.phone}</span>
+                        <span className={currentStyles.error}>{errors.phone}</span>
                     )}
                 </div>
                 
@@ -131,25 +184,24 @@ const SubmitRequestForm: React.FC<SubmitRequestFormProps> = ({
                         placeholder="Email"
                         value={formData.email}
                         onChange={handleChange}
-                        className={`${styles.requestForm__input} ${errors.email ? styles.requestForm__inputError : ''}`}
+                        className={`${currentStyles.input} ${errors.email ? currentStyles.inputError : ''}`}
                         disabled={isSubmitting}
                     />
                     {errors.email && (
-                        <span className={styles.requestForm__error}>{errors.email}</span>
+                        <span className={currentStyles.error}>{errors.email}</span>
                     )}
                 </div>
                 
-                {/* Согласие на обработку персональных данных */}
                 <div className={styles.requestForm__agreement}>
-                    <label className={styles.requestForm__checkbox}>
+                    <label className={currentStyles.checkbox}>
                         <input
                             type="checkbox"
                             checked={isAgreed}
                             onChange={(e) => setIsAgreed(e.target.checked)}
                             disabled={isSubmitting}
                         />
-                        <span></span> {/* Это span нужен для кастомного чекбокса */}
-                        <p className={styles.requestForm__checkboxText}>
+                        <span></span>
+                        <p className={currentStyles.checkboxText}>
                             Согласен на обработку персональных данных 
                             в соответствии с <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a>
                         </p>
@@ -158,7 +210,7 @@ const SubmitRequestForm: React.FC<SubmitRequestFormProps> = ({
                 
                 <button 
                     type="submit" 
-                    className={styles.requestForm__button}
+                    className={currentStyles.button}
                     disabled={isSubmitting}
                 >
                     {isSubmitting ? 'Отправка...' : buttonText}

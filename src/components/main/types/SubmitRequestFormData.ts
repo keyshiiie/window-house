@@ -1,7 +1,7 @@
-// types/SubmitRequest.ts
+// src/components/main/types/SubmitRequestFormData.ts
 export interface SubmitRequestFormData {
-    id?: number;
     name: string;
     phone: string;
     email: string;
+    requestType?: 'measure' | 'calculation'; // добавляем тип заявки
 }
