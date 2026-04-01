@@ -1,0 +1,71 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Geometria', sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $color-black;
+  background-color: $color-white;
+  min-height: 100vh;
+  overflow-x: hidden; // Скрываем горизонтальный скролл
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px; // Добавляем отступы по бокам
+  
+  // На маленьких экранах уменьшаем отступы
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 10px;
+  }
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.empty, .error {
+  color: red;
+  @include font-style(light, base);
+}
+
+// Добавьте глобальные стили для адаптивности
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Для всех секций добавьте overflow-x: hidden при необходимости
+section {
+  overflow-x: hidden;
+}

@@ -1,0 +1,92 @@
+@use '../abstracts/variables' as *;
+
+// Миксин для разных начертаний
+@mixin font-style($weight: light, $size: base) {
+    font-family: 'Roboto', sans-serif;
+    line-height: $line-height-normal;
+    
+    // Толщина
+    @if $weight == light {
+        font-weight: $font-weight-light;
+    } @else if $weight == regular {
+        font-weight: $font-weight-regular;
+    } @else if $weight == bold {
+        font-weight: $font-weight-bold;
+    }
+    
+    // Размер
+    @if $size == xs {
+        font-size: $font-size-xs;
+    } @else if $size == sm {
+        font-size: $font-size-sm;
+    } @else if $size == base {
+        font-size: $font-size-base;
+    } @else if $size == md {
+        font-size: $font-size-md;
+    } @else if $size == lg {
+        font-size: $font-size-lg;
+    } @else if $size == xl {
+        font-size: $font-size-xl;
+    } @else if $size == xxl {
+        font-size: $font-size-xxl;
+    } @else if $size == xxxl {
+        font-size: $font-size-xxxl;
+    }
+}
+
+// Базовые flex-миксины
+@mixin flex($justify: null, $align: null, $direction: null, $wrap: null) {
+    display: flex;
+    
+    @if $justify {
+        justify-content: $justify;
+    }
+    
+    @if $align {
+        align-items: $align;
+    }
+    
+    @if $direction {
+        flex-direction: $direction;
+    }
+    
+    @if $wrap {
+        flex-wrap: $wrap;
+    }
+}
+
+// для кнопки с фоном
+@mixin button-fill($bg-color, $hover-color, $text-color: $color-white) {
+    background: $bg-color;
+    color: $text-color;
+    border: 2px solid $bg-color;
+    @include font-style(bold, sm);
+    border-radius: $border-radius-md;
+    transition: $transition-slow;
+    
+    &:hover {
+        background: $hover-color;
+        border-color: $hover-color;
+    }
+}
+
+// Миксин для кнопки с иконкой
+@mixin button-with-icon($icon-path, $icon-width: 18px, $icon-height: 18px) {
+    display: inline-flex;
+    align-items: center;
+    gap: $gap-xs;
+    @include font-style(bold, sm);
+    transition: $transition-slow;
+    border-radius: $border-radius-md;
+    
+    &::before {
+        content: '';
+        display: inline-block;
+        width: $icon-width;
+        height: $icon-height;
+        background-image: url($icon-path);
+        background-size: contain;
+        background-repeat: no-repeat;
+        flex-shrink: 0;
+    }
+}

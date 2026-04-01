@@ -1,0 +1,9 @@
+// Миксины, шрифты и переменные
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins' as *;
+@use 'abstracts/fonts' as *;
+@use 'abstracts/placeholders' as *;
+
+// База
+@use 'base/base';
+
