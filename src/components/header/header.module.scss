@@ -66,14 +66,6 @@
         }
     }
 
-    &__application-button {
-        @extend %application-button;
-    }
-
-    &__calculation-button {
-        @extend %calculation-button;
-    }
-
     &__burger {
         display: none;
         cursor: pointer;

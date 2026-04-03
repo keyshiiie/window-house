@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from './components/header/header';
 import Main from './components/main/main';
 import Services from './components/services/services'
+import Products from './components/products/Products';
 
 import './App.css'
 
@@ -11,6 +12,7 @@ const App: React.FC = () => {
       <Header/>
       <Main/>
       <Services/>
+      <Products />
       <footer>
         {/* Футер */}
       </footer>

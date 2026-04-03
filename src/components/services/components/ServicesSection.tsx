@@ -1,6 +1,6 @@
 // src/components/services/components/ServicesSection.tsx
 import React, { useState } from 'react';
-import { servicesData } from '../data/servicesData';
+import { servicesData } from '../data/services.data';
 import ServiceCard from './ServiceCard';
 import ServiceDetailModal from '../ServiceDetailModal';
 import type { Services } from '../types/Services';

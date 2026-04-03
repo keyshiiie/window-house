@@ -4,115 +4,115 @@
 @use '../../scss/abstracts/placeholders' as *;
 
 .main {
-    padding: 130px 0;
-    margin-top: 70px; // отсутп под хедер
-    position: relative;  // для позиционирования псевдоэлемента
+  padding: 130px 0;
+  margin-top: 70px; // отсутп под хедер
+  position: relative; // для позиционирования псевдоэлемента
 
-    // Фоновое изображение
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;  // поднимаем выше, чтобы зайти под header__bottom
-        left: 0;
-        width: 100%;
-        height: calc(100%);  // увеличиваем высоту
-        background-image: url('/public/images/main-background.jpg');
-        background-size: cover;
-        background-position: center;
-        pointer-events: none;
-        z-index: -1;
-    }
+  // Фоновое изображение
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; // поднимаем выше, чтобы зайти под header__bottom
+    left: 0;
+    width: 100%;
+    height: calc(100%); // увеличиваем высоту
+    background-image: url('/public/images/main-background.jpg');
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+    z-index: -1;
+  }
 
-    &__row{
-        padding: 0 60px;
-        @include flex(space-between, center);
-    }
+  &__row {
+    padding: 0 60px;
+    @include flex(space-between, center);
+  }
 
-    &__subtitle{
-        @include font-style(bold, xl);
-        color: $color-primary;
-    }
+  &__subtitle {
+    @include font-style(bold, xl);
+    color: $color-primary;
+  }
 
-    &__title{
-        @include font-style(regular, xxxl);
-        color: $color-white;
-        max-width: 520px;
-    }
+  &__title {
+    @include font-style(regular, xxxl);
+    color: $color-white;
+    max-width: 520px;
+  }
 }
 
 // Блок преимуществ
 .advantages {
-    margin-top: $gap-sm;
-    
-    &__grid {
-        @include flex(space-between, center);
-        gap: $gap-base;
-        
-    }
+  margin-top: $gap-sm;
+
+  &__grid {
+    @include flex(space-between, center);
+    gap: $gap-base;
+
+  }
 }
 
 // Карточка преимущества
 .advantageCard {
-    max-width: 170px;
-    @include flex(space-between, start, column);
+  max-width: 170px;
+  @include flex(space-between, start, column);
 
-    &__icon {
-        width: auto;
-        height: 80px;
-        margin-bottom: $gap-sm;
-        
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+  &__icon {
+    width: auto;
+    height: 80px;
+    margin-bottom: $gap-sm;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
-    
-    &__description {
-        color: $color-white;
-        @include font-style(regular, sm);
-        
-        
-        @media (max-width: $breakpoint-tablet) {
-            font-size: $font-size-xs;
-        }
+  }
+
+  &__description {
+    color: $color-white;
+    @include font-style(regular, sm);
+
+
+    @media (max-width: $breakpoint-tablet) {
+      font-size: $font-size-xs;
     }
+  }
 }
 
 // Форма заявки
 .requestForm {
-    @extend %requestForm;
-    
-    &__title {
-        @extend %requestForm-title;
-    }
-    
-    &__form {
-        @extend %requestForm-form;
-    }
-    
-    &__input,
-    &__textarea {
-        @extend %requestForm-input;
-    }
-    
-    &__inputError {
-        @extend %requestForm-inputError;
-    }
-    
-    &__error {
-        @extend %requestForm-error;
-    }
-    
-    &__checkbox {
-        @extend %custom-checkbox; // используем плейсхолдер
-    }
-    
-    &__checkboxText {
-        @extend %checkbox-text; // используем плейсхолдер
-    }
-    
-    &__button {
-        @extend %requestForm-button;
-    }
+  @extend %requestForm;
+
+  &__title {
+    @extend %requestForm-title;
+  }
+
+  &__form {
+    @extend %requestForm-form;
+  }
+
+  &__input,
+  &__textarea {
+    @extend %requestForm-input;
+  }
+
+  &__inputError {
+    @extend %requestForm-inputError;
+  }
+
+  &__error {
+    @extend %requestForm-error;
+  }
+
+  &__checkbox {
+    @extend %custom-checkbox; // используем плейсхолдер
+  }
+
+  &__checkboxText {
+    @extend %checkbox-text; // используем плейсхолдер
+  }
+
+  &__button {
+    @extend %requestForm-button;
+  }
 }

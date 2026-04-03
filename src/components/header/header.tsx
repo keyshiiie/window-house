@@ -2,15 +2,26 @@ import React from 'react';
 import BurgerMenu from './burgerMenu';
 import styles from './header.module.scss';
 import { useActiveSection } from '../../hooks/useActiveSection';
+import ActionButton from '../../components/actionButton/ActionButton';
 
 const Header: React.FC = () => {
     // Массив ID секций для отслеживания
-    const sectionIds = ['services', 'calculator', 'installment'];
+    const sectionIds = ['services', 'products', 'installment'];
     const activeSection = useActiveSection(sectionIds, 100);
+
+    const handleApplicationClick = () => {
+        // Логика открытия модалки или скролла
+        console.log('Открыть форму заявки на замер');
+    };
+
+    const handleCalculationClick = () => {
+        // Логика открытия модалки или скролла
+        console.log('Открыть форму расчета');
+    };
 
     const navItems = [
         { href: "#services", label: "Услуги", id: "services" },
-        { href: "#calculator", label: "Продукция", id: "calculator" },
+        { href: "#products", label: "Продукция", id: "products" },
         { href: "#installment", label: "О компании", id: "installment" },
         { href: "#", label: "Портфолио", id: "portfolio" },
         { href: "#", label: "Вопрос-ответ", id: "faq" },
@@ -57,12 +68,8 @@ const Header: React.FC = () => {
                     </nav>
 
                     <div className={styles['header__actions']}>
-                        <button className={styles['header__application-button']}>
-                            Заявка на замер
-                        </button>
-                        <button className={styles['header__calculation-button']}>
-                            Заказать рассчет
-                        </button>
+                        <ActionButton type="application" onClick={handleApplicationClick} />
+                        <ActionButton type="calculation" onClick={handleCalculationClick} />
                     </div>
 
                     <BurgerMenu />

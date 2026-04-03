@@ -1,6 +1,6 @@
 // components/AdvantageCard.tsx
 import React from 'react';
-import type { Advantage } from '../types/Advantage.ts';
+import type { Advantage } from '../types/Advantage.types.ts';
 import styles from '../main.module.scss';
 
 interface AdvantageCardProps {

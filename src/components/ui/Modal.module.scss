@@ -9,12 +9,30 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2000;
-    animation: fadeIn 0.3s ease;
+    transition: background 0.3s ease;
+    
+    &.open {
+        background: rgba(0, 0, 0, 0.7);
+        
+        .modalContent {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    &.close {
+        background: rgba(0, 0, 0, 0);
+        
+        .modalContent {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+    }
 }
 
 .modalContent {
@@ -25,6 +43,9 @@
     max-height: 100vh;
     overflow-y: auto;
     padding: 0;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
     @media (max-width: $breakpoint-tablet) {
         padding: 0;
@@ -37,9 +58,9 @@
     top: 30px;
     float: right;
     right: 30px;
-    width: 40px; // ← фиксированная ширина
-    height: 40px; // ← фиксированная высота
-    padding: 0; // ← убираем паддинги
+    width: 40px;
+    height: 40px;
+    padding: 0;
     border-radius: 50%;
     background: none;
     border: none;
@@ -48,7 +69,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0; // ← запрещаем сжатие
+    flex-shrink: 0;
     
     img {
         width: 20px;
@@ -70,17 +91,6 @@
         opacity: 0;
     }
     to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
         opacity: 1;
     }
 }

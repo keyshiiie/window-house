@@ -1,6 +1,6 @@
 // src/components/main/components/SubmitRequestForm.tsx
 import React, { useState } from 'react';
-import type { SubmitRequestFormData } from '../types/SubmitRequestFormData';
+import type { SubmitRequestFormData } from '../types/SubmitRequestFormData.types';
 import styles from '../main.module.scss';
 import serviceStyles from '../../services/serviceDetail.module.scss';
 

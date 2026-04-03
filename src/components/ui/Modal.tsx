@@ -1,7 +1,7 @@
 // src/components/ui/Modal.tsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Modal.module.scss';
-import closeIcon from '/public/icons/close-icon.svg'; // импортируем иконку
+import closeIcon from '/public/icons/close-icon.svg';
 
 interface ModalProps {
     isOpen: boolean;
@@ -10,11 +10,20 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+    const [animationState, setAnimationState] = useState<'open' | 'close' | ''>('');
+    const [shouldRender, setShouldRender] = useState(false);
+
     useEffect(() => {
         if (isOpen) {
+            setShouldRender(true);
+            setTimeout(() => setAnimationState('open'), 10);
             document.body.style.overflow = 'hidden';
         } else {
-            document.body.style.overflow = '';
+            setAnimationState('close');
+            setTimeout(() => {
+                setShouldRender(false);
+                document.body.style.overflow = '';
+            }, 300);
         }
 
         const handleEsc = (e: KeyboardEvent) => {
@@ -24,14 +33,13 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
         window.addEventListener('keydown', handleEsc);
         return () => {
             window.removeEventListener('keydown', handleEsc);
-            document.body.style.overflow = '';
         };
     }, [isOpen, onClose]);
 
-    if (!isOpen) return null;
+    if (!shouldRender) return null;
 
     return (
-        <div className={styles.modalOverlay} onClick={onClose}>
+        <div className={`${styles.modalOverlay} ${animationState === 'open' ? styles.open : animationState === 'close' ? styles.close : ''}`} onClick={onClose}>
             <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
                 <button className={styles.modalClose} onClick={onClose}>
                     <img src={closeIcon} alt="Закрыть" />

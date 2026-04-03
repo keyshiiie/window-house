@@ -1,0 +1,15 @@
+// ActionButton.module.scss
+@use '../../scss/abstracts/variables' as *;
+@use '../../scss/abstracts/mixins' as *;
+@use '../../scss/abstracts/placeholders' as *;
+.button {
+
+    
+    &--application {
+      @extend %application-button;
+    }
+    
+    &--calculation {
+      @extend %calculation-button;
+    }
+}
