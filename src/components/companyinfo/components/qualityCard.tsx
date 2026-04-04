@@ -11,11 +11,16 @@ const QualityCard: React.FC<QualityCardProps> = ({ quality }) => {
     return (
         <div className={styles.qualityCard}>
             <div className={styles.qualityCard__icon}>
-                <img src={quality.icon} alt={quality.title} />
+              <img src={quality.icon} alt={quality.title} />
             </div>
-            <h3 className={styles.qualityCard__title}>
+            <div className={styles.qualityCard__text}>
+              <h3 className={styles.qualityCard__title}>
                 {quality.title}
-            </h3>
+              </h3>
+              <p className={styles.qualityCard__description}>
+                  {quality.description}
+              </p>
+            </div>
         </div>
     );
 };

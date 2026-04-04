@@ -1,6 +1,6 @@
 // Main.tsx
 import React from 'react';
-import MainAdvantages from './components/MainAdvantages';
+import MainAdvantages from './components/MainQuality.tsx';
 import SubmitRequestForm from './components/SubmitRequestForm.tsx';
 import styles from './main.module.scss';
 

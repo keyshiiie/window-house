@@ -1,0 +1,72 @@
+// src/components/companyinfo/companyinfo.module.scss
+@use '../../scss/abstracts/variables' as *;
+@use '../../scss/abstracts/mixins' as *;
+@use '../../scss/abstracts/placeholders' as *;
+
+.companyinfo {
+  padding: 90px 0 30px;
+  background: $color-gray-200;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__title {
+    @extend %section-title;
+  }
+
+  &__types {
+    @include flex(center, center);
+    gap: $gap-xxs;
+  }
+
+  &__type {
+    padding: 8px 25px;
+    border-radius: $border-radius-sm;
+    @include font-style(regular, base);
+    border: none;
+    color: $color-secondary;
+    cursor: pointer;
+    transition: $transition-slow;
+    letter-spacing: 0.5px;
+
+    &--active {
+      @include font-style(bold, base);
+      background: $color-primary;
+      color: $color-white;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;  
+    margin-top: 80px;       
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .companyinfo {
+    padding: 40px 0;
+
+    &__title {
+      font-size: 32px;
+    }
+
+    &__types {
+      gap: 12px;
+    }
+
+    &__type {
+      padding: 6px 16px;
+      font-size: 12px;
+    }
+  }
+}

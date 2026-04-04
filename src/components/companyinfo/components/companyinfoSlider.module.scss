@@ -1,0 +1,61 @@
+// src/components/products/components/companyinfoSlider.module.scss
+@use '../../../scss/abstracts/variables' as *;
+@use '../../../scss/abstracts/mixins' as *;
+@use '../../../scss/abstracts/placeholders' as *;
+
+.companyinfo-slider {
+  position: relative;
+  margin: 30px 0 70px;
+
+  &__container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+.companyinfo-card {
+  @include flex($align: center);
+  gap: $gap-base;
+  background: $color-white;
+  overflow: hidden;
+  width: 100%;
+  transition: transform 0.3s ease;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__image {
+    flex: 1;
+    
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    padding-right: 30px;
+    display: grid;
+    gap: $gap-md;
+    
+    @media (max-width: 768px) {
+      padding: 0 20px 30px 20px;
+    }
+  }
+
+  &__title {
+    @include font-style(bold, xxxl);
+    color: $color-primary;
+  }
+
+  &__description {
+    @include font-style(light, base);
+    color: $color-black;
+    max-width: 390px;
+  }
+}

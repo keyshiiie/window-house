@@ -1,7 +1,7 @@
 // data/advantagesData.ts
-import type { Advantage } from '../types/Advantage.types.ts';
+import type { Quality } from '../../../types/quality.types';
 
-export const advantagesData: Advantage[] = [
+export const qualityData: Quality[] = [
     {
         id: 1,
         title: '',

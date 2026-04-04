@@ -41,7 +41,7 @@
 }
 
 // Блок преимуществ
-.advantages {
+.quality{
   margin-top: $gap-sm;
 
   &__grid {
@@ -52,7 +52,7 @@
 }
 
 // Карточка преимущества
-.advantageCard {
+.qualityCard {
   max-width: 170px;
   @include flex(space-between, start, column);
 

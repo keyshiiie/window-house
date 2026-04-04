@@ -1,7 +1,7 @@
 // components/QualityCard.tsx
 import React from 'react';
 import type { Quality } from '../../../types/quality.types';
-import styles from './quality.module.scss';
+import styles from '../main.module.scss';
 
 interface QualityCardProps {
     quality: Quality;
@@ -16,6 +16,9 @@ const QualityCard: React.FC<QualityCardProps> = ({ quality }) => {
             <h3 className={styles.qualityCard__title}>
                 {quality.title}
             </h3>
+            <p className={styles.qualityCard__description}>
+                {quality.description}
+            </p>
         </div>
     );
 };
