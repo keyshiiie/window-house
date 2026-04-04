@@ -1,0 +1,28 @@
+// src/components/faq/FAQ.module.scss
+@use '../../scss/abstracts/variables' as *;
+@use '../../scss/abstracts/mixins' as *;
+@use '../../scss/abstracts/placeholders' as *;
+
+.faq {
+  padding: 60px 0;
+  background: $color-gray-200;
+
+  &__content {
+    max-width: 1200px;
+    padding: 40px 100px 60px;
+    margin: 0 auto;
+    border-radius: $border-radius-sm;
+    background: $color-primary;
+  }
+
+  &__title {
+    @extend %section-title;
+    color: $color-white;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xxs;
+  }
+}

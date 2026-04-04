@@ -6,7 +6,7 @@ import ActionButton from '../../components/actionButton/ActionButton';
 
 const Header: React.FC = () => {
     // Массив ID секций для отслеживания
-    const sectionIds = ['services', 'products', 'companyinfo'];
+    const sectionIds = ['services', 'products', 'companyinfo', 'portfolio', 'faq'];
     const activeSection = useActiveSection(sectionIds, 100);
 
     const handleApplicationClick = () => {
@@ -23,8 +23,8 @@ const Header: React.FC = () => {
         { href: "#services", label: "Услуги", id: "services" },
         { href: "#products", label: "Продукция", id: "products" },
         { href: "#companyinfo", label: "О компании", id: "companyinfo" },
-        { href: "#", label: "Портфолио", id: "portfolio" },
-        { href: "#", label: "Вопрос-ответ", id: "faq" },
+        { href: "#portfolio", label: "Портфолио", id: "portfolio" },
+        { href: "#faq", label: "Вопрос-ответ", id: "faq" },
         { href: "#", label: "Контакты", id: "contacts" }
     ];
 

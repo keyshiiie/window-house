@@ -4,6 +4,8 @@ import Main from './components/main/main';
 import Services from './components/services/services'
 import Products from './components/products/Products';
 import Companyinfo from './components/companyinfo/companyinfo';
+import Portfolio from './components/portfolio/portfolio';
+import FAQ from './components/faq/FAQ';
 
 import './App.css'
 
@@ -15,6 +17,8 @@ const App: React.FC = () => {
       <Services/>
       <Products />
       <Companyinfo/>
+      <Portfolio/>
+      <FAQ/>
       <footer>
         {/* Футер */}
       </footer>

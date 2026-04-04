@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import type { Product, ProductType } from '../types/product.types';
 import { products } from '../data/products.data';
-import { PrevArrowIcon, NextArrowIcon } from './ArrowIcons';
+import { PrevArrowIcon, NextArrowIcon } from '../../ui/ArrowIcons';
 import styles from './ProductSlider.module.scss';
 
 interface ProductSliderProps {
@@ -59,7 +59,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ activeType: externalActiv
 
   return (
     <div className={styles['product-slider']}>
-      <div className={styles['product-slider__container']}>
+      <div className={"container"}>
         <button 
           className={`${styles['product-slider__arrow']} ${styles['product-slider__arrow--prev']}`} 
           onClick={goToPrevType}

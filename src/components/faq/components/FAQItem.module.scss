@@ -1,0 +1,85 @@
+// src/components/faq/components/FAQItem.module.scss
+@use '../../../scss/abstracts/variables' as *;
+@use '../../../scss/abstracts/mixins' as *;
+@use '../../../scss/abstracts/placeholders' as *;
+
+.faq-item {
+  border-radius: $border-radius-sm;
+  overflow: hidden;
+  transition: $transition-slow;
+  background: $color-white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  &__header {
+    width: 100%;
+    padding: 20px 24px;
+    @include flex(space-between, center);
+    background: $color-gray-500;
+    border: none;
+    cursor: pointer;
+    transition: $transition-slow;
+    
+    &:hover {
+      background: $color-white;
+      
+      .faq-item__question {
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__question {
+    @include font-style(bold, md);
+    color: $color-secondary;
+    text-align: left;
+    transition: $transition-slow;
+    flex: 1;
+    padding-right: 20px;
+    
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    display: inline-flex;
+    transition: $transition-slow;
+    color: $color-secondary;
+    
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__answer-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows $transition-slow;
+  }
+
+  &--open &__answer-wrapper {
+    grid-template-rows: 1fr;
+  }
+
+  &__answer {
+    overflow: hidden;
+    
+    p {
+      @include font-style(regular, base);
+      color: $color-black;
+      padding: 0 24px 24px 24px;
+      line-height: 1.6;
+      
+      @media (max-width: 768px) {
+        font-size: 14px;
+        padding: 0 20px 20px 20px;
+      }
+    }
+  }
+}

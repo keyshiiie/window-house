@@ -1,0 +1,28 @@
+// src/components/portfolio/portfolio.module.scss
+@use '../../scss/abstracts/variables' as *;
+@use '../../scss/abstracts/mixins' as *;
+@use '../../scss/abstracts/placeholders' as *;
+
+.portfolio {
+  padding: 60px 0;
+  background: $color-gray-200;
+
+  &__content{
+    background: $color-white;
+    padding-top: 50px
+  }
+
+  &__title {
+    @extend %section-title;
+  }
+
+  &__map {
+    .mapContainer {
+      overflow: hidden;
+      
+      iframe {
+        display: block;
+      }
+    }
+  }
+}
