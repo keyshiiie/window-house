@@ -1,0 +1,67 @@
+// src/components/contacts/contacts.module.scss
+@use '../../scss/abstracts/variables' as *;
+@use '../../scss/abstracts/mixins' as *;
+@use '../../scss/abstracts/placeholders' as *;
+
+.contacts {
+  padding: 60px 0;
+  background: $color-gray-200;
+
+  &__title {
+    @extend %section-title;
+  }
+
+  &__wrapper {
+    
+  }
+
+  &__info {
+    display: grid;
+    gap: $gap-xxs;
+  }
+
+  &__subtitle {
+    @include font-style(bold, md);
+    color: $color-secondary;
+  }
+
+  &__phones, &__address, &__email {
+    @include flex($align:center);
+    gap: $gap-sm;
+  }
+
+  &__phoneItem {
+    margin-right: 30px;
+  }
+
+  &__phone {
+    @include font-style(bold, lg);
+    color: $color-black;
+  }
+
+  &__addressText, &__emailLink {
+    @include font-style(regular, md);
+    color: $color-black;
+  }
+
+  &__description {
+    @include font-style(regular, md);
+    color: $color-secondary;
+    max-width: 228px;
+    margin: 40px 0 10px;
+  }
+
+  &__social {
+    @include flex($align:center);
+    gap: $gap-xs;
+  }
+
+  &__socialLink {
+    display: inline-flex;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+}

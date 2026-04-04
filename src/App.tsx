@@ -6,6 +6,7 @@ import Products from './components/products/Products';
 import Companyinfo from './components/companyinfo/companyinfo';
 import Portfolio from './components/portfolio/portfolio';
 import FAQ from './components/faq/FAQ';
+import Contacts from './components/contacts/contacts';
 
 import './App.css'
 
@@ -19,6 +20,7 @@ const App: React.FC = () => {
       <Companyinfo/>
       <Portfolio/>
       <FAQ/>
+      <Contacts/>
       <footer>
         {/* Футер */}
       </footer>

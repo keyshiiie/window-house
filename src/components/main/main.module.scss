@@ -4,7 +4,7 @@
 @use '../../scss/abstracts/placeholders' as *;
 
 .main {
-  padding: 130px 0;
+  padding: 60px 0;
   margin-top: 70px; // отсутп под хедер
   position: relative; // для позиционирования псевдоэлемента
 
@@ -76,43 +76,5 @@
     @media (max-width: $breakpoint-tablet) {
       font-size: $font-size-xs;
     }
-  }
-}
-
-// Форма заявки
-.requestForm {
-  @extend %requestForm;
-
-  &__title {
-    @extend %requestForm-title;
-  }
-
-  &__form {
-    @extend %requestForm-form;
-  }
-
-  &__input,
-  &__textarea {
-    @extend %requestForm-input;
-  }
-
-  &__inputError {
-    @extend %requestForm-inputError;
-  }
-
-  &__error {
-    @extend %requestForm-error;
-  }
-
-  &__checkbox {
-    @extend %custom-checkbox; // используем плейсхолдер
-  }
-
-  &__checkboxText {
-    @extend %checkbox-text; // используем плейсхолдер
-  }
-
-  &__button {
-    @extend %requestForm-button;
   }
 }

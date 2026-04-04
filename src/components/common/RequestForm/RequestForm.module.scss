@@ -1,0 +1,206 @@
+// src/components/common/RequestForm/RequestForm.module.scss
+@use '../../../scss/abstracts/variables' as *;
+@use '../../../scss/abstracts/mixins' as *;
+@use '../../../scss/abstracts/placeholders' as *;
+
+.requestForm {
+  background: $color-white;
+  padding: 40px 40px 70px;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  position: relative; 
+  overflow: visible;
+
+  &__title {
+    @include font-style(bold, md);
+    color: $color-secondary;
+    margin-bottom: $gap-base;
+    text-align: center;
+  }
+  
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xxs;
+    max-width: 320px;
+  }
+  
+  &__input {
+    width: 100%;
+    padding: 12px 15px;
+    background: $color-gray-300;
+    border: 1px solid $color-gray-300;
+    border-radius: $border-radius-md;
+    @include font-style(regular, sm);
+    color: $color-primary;
+    transition: $transition-fast;
+        
+    &:focus {
+        outline: none;
+        border-color: $color-primary;
+    }
+        
+    &:disabled {
+        background-color: $color-gray-100;
+        cursor: not-allowed;
+    }
+
+    &::placeholder{
+        color: $color-secondary-smooth;
+    }
+  }
+  
+  &__inputError {
+    border-color: $color-error;
+        
+    &:focus {
+        border-color: $color-error;
+        box-shadow: 0 0 0 3px rgba($color-error, 0.1);
+    }
+  }
+  
+  &__error {
+    @include font-style(regular, xs);
+    color: $color-error;
+    margin-top: $gap-xss;
+    display: block;
+  }
+  
+  &__checkbox {
+    position: relative;
+    @include flex($align: center);
+    cursor: pointer;
+    gap: $gap-xs;
+    
+    // Скрываем стандартный чекбокс
+    input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      cursor: pointer;
+      
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+    
+    // Кастомный чекбокс
+    input + span {
+      position: relative;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        min-width: 24px;
+        background: $color-gray-300; 
+        border-radius: 4px;
+        cursor: pointer;
+        flex-shrink: 0;
+        transition: all 0.25s ease;
+      
+      // Галочка
+      &::after {
+        content: '';
+          position: absolute;
+          left: 65%;
+          top: 35%;
+          transform: translate(-50%, -50%) scale(0);
+          width: 25px;
+          height: 26px;
+          background-image: url("/public/icons/vector.svg");
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          pointer-events: none;
+      }
+    }
+    
+    // Состояние checked
+    input:checked + span {
+      background: $color-gray-300;      
+      
+      &::after {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+    
+    // Состояние hover
+    input:hover:not(:disabled) + span {
+      border-color: $color-primary;
+      background: rgba($color-secondary, 0.1);
+    }
+    
+    // Состояние focus
+    input:focus-visible + span {
+      outline: 2px solid rgba($color-secondary, 0.5);
+      outline-offset: 2px;
+    }
+    
+    // Состояние disabled
+    input:disabled + span {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: $color-gray-200;
+    }
+    
+    // Состояние error (опционально)
+    &--error input + span {
+      border-color: $color-error;
+    }
+  }
+
+  &__checkboxText {
+    flex: 1;
+    margin: 0;
+    @include font-style(regular, xs);
+    line-height: 120%;
+    color: #000000;
+    cursor: pointer;
+    
+    &:hover {
+      color: $color-secondary-light;
+      transition: $transition-slow;
+    }
+    
+    a {
+      color: $color-secondary-light;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+  
+  &__button {
+    @include button-fill($color-primary, $color-primary-dark);
+    padding: 15px 60px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    width: auto;
+    @extend %base-button;
+    align-self: center; // центрируем кнопку
+        
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+  }
+  
+  // Варианты стилей
+  &--white {
+  }
+  
+  &--orange {
+  }
+  
+  &--main {
+    
+  }
+}

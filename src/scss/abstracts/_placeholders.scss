@@ -68,33 +68,6 @@
     
 }
 
-// Текст для чекбокса
-%checkbox-text {
-    flex: 1;
-    margin: 0;
-    @include font-style(regular, xs);
-    line-height: 120%;
-    color: #000000;
-    cursor: pointer;
-    
-    &:hover {
-        color: $color-secondary-light;
-        transition: $transition-slow;
-    }
-
-    a {
-        color: $color-secondary-light;
-        text-decoration: none;
-        
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-    
-    @media (max-width: 768px) {
-        font-size: 12px;
-    }
-}
 
 
 // Текст для секции
@@ -184,73 +157,3 @@
     }
 }
 
-%requestForm-title {
-    @include font-style(bold, md);
-    color: $color-secondary;
-    margin-bottom: $gap-base;
-    text-align: center;
-}
-
-%requestForm-form {
-    display: flex;
-    flex-direction: column;
-    gap: $gap-xxs;
-    max-width: 320px;
-}
-
-%requestForm-input {
-    width: 100%;
-    padding: 12px 15px;
-    background: $color-gray-300;
-    border: 1px solid $color-gray-300;
-    border-radius: $border-radius-md;
-    @include font-style(regular, sm);
-    color: $color-primary;
-    transition: $transition-fast;
-        
-    &:focus {
-        outline: none;
-        border-color: $color-primary;
-    }
-        
-    &:disabled {
-        background-color: $color-gray-100;
-        cursor: not-allowed;
-    }
-
-    &::placeholder{
-        color: $color-secondary-smooth;
-    }
-}
-
-%requestForm-inputError{
-    border-color: $color-error;
-        
-    &:focus {
-        border-color: $color-error;
-        box-shadow: 0 0 0 3px rgba($color-error, 0.1);
-    }
-}
-
-%requestForm-error{
-    @include font-style(regular, xs);
-    color: $color-error;
-    margin-top: $gap-xss;
-    display: block;
-}
-
-%requestForm-button{
-    @include button-fill($color-primary, $color-primary-dark);
-    padding: 15px 60px;
-    margin-top: 10px;
-    cursor: pointer;
-    border: none;
-    width: auto;
-    @extend %base-button;
-    align-self: center; // центрируем кнопку
-        
-    &:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
-    }
-}
