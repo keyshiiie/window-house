@@ -1,0 +1,40 @@
+@use '../../../../../scss/abstracts/variables' as *;
+@use '../../../../../scss/abstracts/mixins' as *;
+@use '../../../../../scss/abstracts/placeholders' as *;
+
+.qualityCard {
+  width: 100%;
+  display: grid;         
+  grid-template-rows: auto 1fr; 
+  text-align: center;
+  
+  &__icon {
+    width: auto;
+    height: 80px;
+    margin: 0 auto 27px auto;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  
+  &__title {
+    @include font-style(bold, base);
+    text-transform: uppercase;
+    color: $color-secondary;
+    margin: 0 auto 15px auto;  
+    align-self: start;
+  }
+
+  &__description {
+    @include font-style(regular, base);
+    color: $color-black;
+    margin: 0;
+    align-self: start;
+  }
+}

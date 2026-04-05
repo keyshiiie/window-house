@@ -1,7 +1,8 @@
 // src/components/products/components/CompanyinfoSlider.tsx
 import React, { useState } from 'react';
 import type { CompanyinfoTypes } from '../types/companyinfo.types';
-import { DescriptionCard } from './sliderCard/DescriptionCard';
+import { DescriptionCard } from './sliderCard/DescriptionCard/DescriptionCard';
+import { HowWeWorkCard } from './sliderCard/HowWeWorkCard/HowWeWorkCard';
 import styles from './companyinfoSlider.module.scss';
 
 interface CompanyinfoSliderProps {
@@ -20,8 +21,7 @@ const CompanyinfoSlider: React.FC<CompanyinfoSliderProps> = ({ activeType: exter
       case 'Описание':
         return <DescriptionCard />;
       case 'Как мы работаем':
-        // TODO: добавить компонент HowWeWorkCard
-        return <div>Как мы работаем - в разработке</div>;
+        return <HowWeWorkCard/>;
       case 'Отзывы':
         // TODO: добавить компонент ReviewsCard
         return <div>Отзывы - в разработке</div>;

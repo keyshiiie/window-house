@@ -22,7 +22,6 @@ const App: React.FC = () => {
       <FAQ/>
       <Contacts/>
       <footer>
-        {/* Футер */}
       </footer>
     </div>
   );

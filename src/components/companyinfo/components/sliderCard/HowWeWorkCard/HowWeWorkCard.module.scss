@@ -1,0 +1,17 @@
+// src/components/companyinfo/components/sliderCard/DescriptionCard.module.scss
+@use '../../../../../scss/abstracts/variables' as *;
+@use '../../../../../scss/abstracts/mixins' as *;
+@use '../../../../../scss/abstracts/placeholders' as *;
+
+.howWeWorkCard {
+  padding: 70px 70px 100px;
+
+  &__grid{
+    @include flex(space-between, center);
+  }
+
+  &__title {
+    @extend %section-title;
+    margin-bottom: 70px;
+  }
+}
