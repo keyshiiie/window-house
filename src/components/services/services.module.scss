@@ -4,166 +4,166 @@
 @use '../../scss/abstracts/placeholders' as *;
 
 .services {
-    padding: 70px 0 100px;
-    background: $color-gray-200;
+  padding: 70px 0 100px;
+  background: $color-gray-200;
+  
+  @media (max-width: $breakpoint-tablet) {
+    padding: 50px 0;
+  }
+  
+  &__header {
+      
+    @media (max-width: $breakpoint-tablet) {
+        margin-bottom: $gap-base;
+    }
+  }
+  
+  &__title {
+    @extend %section-title;
+  }
+    
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $gap-xs;
     
     @media (max-width: $breakpoint-tablet) {
-        padding: 50px 0;
+        grid-template-columns: 1fr;
+        gap: $gap-sm;
     }
-    
-    &__header {
-        
-        @media (max-width: $breakpoint-tablet) {
-            margin-bottom: $gap-base;
-        }
-    }
-    
-    &__title {
-        @extend %section-title;
-    }
-    
-    &__grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: $gap-xs;
-        
-        @media (max-width: $breakpoint-tablet) {
-            grid-template-columns: 1fr;
-            gap: $gap-sm;
-        }
-    }
+  }
 }
 
 // Карточка услуги
 .serviceCard {
-    position: relative;
-    border-radius: $border-radius-sm;
-    overflow: hidden;
-    aspect-ratio: 2 / 1;
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-    transition: $transition-slow;
+  position: relative;
+  border-radius: $border-radius-sm;
+  overflow: hidden;
+  aspect-ratio: 2 / 1;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: $transition-slow;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
     
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: $shadow-lg;
-        
-        .serviceCard__overlay {
-            background: rgba($color-black, 0.1);
-        }
-        
-        // Ховер для стрелочки при наведении на карточку
-        .serviceCard__button {
-            &::after {
-                background-image: url('/icons/arrow-orange.svg');
-                transform: translateX(5px);
-            }
-        }
-        
-        .serviceCard__buttonText {
-            color: $color-primary;
-        }
+    .serviceCard__overlay {
+      background: rgba($color-black, 0.1);
     }
+    
+    // Ховер для стрелочки при наведении на карточку
+    .serviceCard__button {
+      &::after {
+          background-image: url('/icons/arrow-orange.svg');
+          transform: translateX(5px);
+      }
+    }
+    
+    .serviceCard__buttonText {
+      color: $color-primary;
+    }
+  }
 
-    &__header {
-        @include flex(space-between, center);
-        gap: $gap-sm;
+  &__header {
+    @include flex(space-between, center);
+    gap: $gap-sm;
+  }
+    
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: $gap-base;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: $transition-slow;
+    gap: $gap-sm;
+    
+    @media (max-width: $breakpoint-tablet) {
+      padding: $gap-sm;
+    }
+  }
+    
+  &__icon {
+    width: 70px;
+    height: 70px;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
     
-    &__overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        padding: $gap-base;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        transition: $transition-slow;
-        gap: $gap-sm;
-        
-        @media (max-width: $breakpoint-tablet) {
-            padding: $gap-sm;
-        }
+    @media (max-width: $breakpoint-tablet) {
+      width: 50px;
+      height: 50px;
+    }
+  }
+    
+  &__title {
+    color: $color-secondary;
+    @include font-style(bold, xl);
+    max-width: 310px;
+    text-align: left;
+    margin: 0;
+    
+    @media (max-width: $breakpoint-tablet) {
+        font-size: $font-size-md;
+    }
+  }
+    
+  &__description {
+    @include font-style(regular, base);
+    max-width: 360px;
+    color: $color-secondary;
+    line-height: $line-height-normal;
+    text-align: left;
+    margin: 0;
+    flex: 1;
+    
+    @media (max-width: $breakpoint-tablet) {
+        font-size: $font-size-xs;
+    }
+  }
+    
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    gap: $gap-xs;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px 0;
+    position: absolute;
+    bottom: $gap-base;
+    right: $gap-base;
+      
+    // Иконка через псевдоэлемент
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 38px;
+      height: 20px;
+      background-image: url('/icons/arrow-white.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: $transition-slow;
     }
     
-    &__icon {
-        width: 70px;
-        height: 70px;
-        
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        @media (max-width: $breakpoint-tablet) {
-            width: 50px;
-            height: 50px;
-        }
+    @media (max-width: $breakpoint-tablet) {
+      bottom: $gap-sm;
+      right: $gap-sm;
+      
+      &::after {
+          width: 16px;
+          height: 16px;
+      }
     }
-    
-    &__title {
-        color: $color-secondary;
-        @include font-style(bold, xl);
-        max-width: 310px;
-        text-align: left;
-        margin: 0;
-        
-        @media (max-width: $breakpoint-tablet) {
-            font-size: $font-size-md;
-        }
-    }
-    
-    &__description {
-        @include font-style(regular, base);
-        max-width: 360px;
-        color: $color-secondary;
-        line-height: $line-height-normal;
-        text-align: left;
-        margin: 0;
-        flex: 1;
-        
-        @media (max-width: $breakpoint-tablet) {
-            font-size: $font-size-xs;
-        }
-    }
-    
-    &__button {
-        display: inline-flex;
-        align-items: center;
-        gap: $gap-xs;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 8px 0;
-        position: absolute;
-        bottom: $gap-base;
-        right: $gap-base;
-        
-        // Иконка через псевдоэлемент
-        &::after {
-            content: '';
-            display: inline-block;
-            width: 38px;
-            height: 20px;
-            background-image: url('/icons/arrow-white.svg');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            transition: $transition-slow;
-        }
-        
-        @media (max-width: $breakpoint-tablet) {
-            bottom: $gap-sm;
-            right: $gap-sm;
-            
-            &::after {
-                width: 16px;
-                height: 16px;
-            }
-        }
-    }
+  }
 }

@@ -9,7 +9,11 @@
 
   &__content{
     background: $color-white;
-    padding-top: 50px
+    padding-top: 50px;
+
+    @media (max-width: $breakpoint-tablet) {
+      padding: 0 10px;;
+    }
   }
 
   &__title {

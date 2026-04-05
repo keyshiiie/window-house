@@ -51,7 +51,6 @@
       &:hover:not(:disabled) {
         transform: translateY(-50%) scale(1.05);
         
-        // Меняем цвет иконки при наведении
         svg path {
           stroke: $color-secondary !important;
         }
@@ -84,7 +83,7 @@
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 20px;
+    gap: $gap-sm;
   }
 
   &__image {
@@ -101,6 +100,7 @@
     padding-right: 30px;
     display: grid;
     gap: $gap-md;
+
     @media (max-width: 768px) {
       padding: 0 20px 30px 20px;
     }
@@ -148,17 +148,58 @@
     white-space: nowrap;
   }
 }
-// Адаптивность для стрелок
-@media (max-width: 1400px) {
+
+// Адаптивность для планшетов и десктопов
+@media (max-width: $breakpoint-large) {
   .product-slider {
+    &__container {
+      padding: 0 40px; // Добавляем отступы для стрелок внутри контейнера
+    }
+    
     &__arrow {
       &--prev {
-        left: 20px;
+        left: -20px; // Стрелки ближе к краю
       }
 
       &--next {
-        right: 20px;
+        right: -20px;
       }
+    }
+  }
+}
+
+// Адаптивность для мобилок
+@media (max-width: $breakpoint-mobile) {
+  .product-slider {
+    margin: 20px 0; // Уменьшаем отступы
+    
+    &__container {
+      padding: 0; // Убираем отступы полностью
+    }
+    
+    &__arrow {
+      display: none; // Скрываем стрелки на мобилках
+    }
+  }
+  
+  .product-card {
+    &__content {
+      padding: 0 15px 20px 15px; // Уменьшаем боковые отступы
+    }
+    
+    &__title {
+      font-size: 24px; // Уменьшаем заголовок
+    }
+    
+    &__description {
+      font-size: 14px; // Уменьшаем описание
+    }
+  }
+  
+  .characteristic {
+    &__name,
+    &__value {
+      font-size: 13px; // Уменьшаем шрифт характеристик
     }
   }
 }

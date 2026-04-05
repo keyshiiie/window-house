@@ -59,7 +59,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ activeType: externalActiv
 
   return (
     <div className={styles['product-slider']}>
-      <div className={"container"}>
+      <div className={styles['product-container']}>
         <button 
           className={`${styles['product-slider__arrow']} ${styles['product-slider__arrow--prev']}`} 
           onClick={goToPrevType}

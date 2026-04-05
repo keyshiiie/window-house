@@ -23,9 +23,10 @@
       gap: $gap-xxs;
     }
     
-    @media (max-width: 640px) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: $gap-xxs;
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr; // 1 колонка на мобилках
+      gap: $gap-sm;
+      justify-items: center;
     }
   }
 
@@ -84,6 +85,13 @@
     border-radius: $border-radius-sm;
     transition: all 0.3s ease;
     background: $color-gray-200;
+    max-width: 200px;
+    width: 100%;
+    
+    @media (max-width: 768px) {
+      max-width: 280px;
+      margin: 0 auto;
+    }
     
     &:hover {
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
@@ -114,9 +122,51 @@
       transform: scale(1.05);
     }
   }
+  
+  // Доты для мобилок
+  &__dots {
+    @include flex(center, center);
+    gap: 12px;
+    margin-top: 30px;
+    
+    @media (max-width: 768px) {
+      margin-top: 20px;
+      gap: 10px;
+    }
+    
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ddd;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+      
+      &:hover {
+        background: #999;
+      }
+      
+      &--active {
+        width: 30px;
+        border-radius: 5px;
+        background: $color-secondary;
+      }
+      
+      @media (max-width: 768px) {
+        width: 8px;
+        height: 8px;
+        
+        &--active {
+          width: 24px;
+        }
+      }
+    }
+  }
 }
 
-// Адаптивность для стрелок
+// Адаптивность для стрелок (только для десктопа)
 @media (max-width: 1200px) {
   .certificates-slider {
     &__arrow {
@@ -133,14 +183,7 @@
 @media (max-width: 768px) {
   .certificates-slider {
     &__arrow {
-      width: 36px;
-      height: 36px;
-      top: 40%;
-      
-      svg {
-        width: 16px;
-        height: 30px;
-      }
+      display: none; // Скрываем стрелки на мобилках
     }
   }
 }

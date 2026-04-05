@@ -26,7 +26,7 @@ const Companyinfo: React.FC = () => {
 
   return (
     <section className={styles.companyinfo} id='companyinfo'>
-      <div className={styles.companyinfo__container}>
+      <div className="container">
         <div className={styles.companyinfo__header}>
           <h2 className={styles.companyinfo__title}>О компании</h2>
           <div className={styles.companyinfo__types}>

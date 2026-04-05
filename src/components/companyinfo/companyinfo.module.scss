@@ -18,8 +18,16 @@
   }
 
   &__types {
-    @include flex(center, center);
+    @include flex(center, center); 
     gap: $gap-xxs;
+    flex-wrap: wrap;
+    
+    @media (max-width: $breakpoint-mobile) {
+      gap: $gap-xxs;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); 
+      gap: $gap-xxs;
+    }
   }
 
   &__type {
@@ -42,31 +50,60 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
+    
+    @media (max-width: $breakpoint-tablet) {
+      padding: 6px 18px;
+      font-size: 14px;
+    }
+    
+    @media (max-width: $breakpoint-mobile) {
+      padding: 6px 14px;
+      font-size: 12px;
+    }
   }
 
   &__actions {
     display: flex;
     justify-content: center;  
-    margin-top: 80px;       
+    margin-top: 80px;
+    
+    @media (max-width: $breakpoint-tablet) {
+      margin-top: 50px;
+    }
+    
+    @media (max-width: $breakpoint-mobile) {
+      margin-top: 30px;
+    }
   }
 }
 
 // Адаптивность
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-tablet) {
   .companyinfo {
-    padding: 40px 0;
+    padding: 60px 0 30px;
 
     &__title {
       font-size: 32px;
+      margin-bottom: 30px;
     }
 
     &__types {
       gap: 12px;
     }
+  }
+}
 
-    &__type {
-      padding: 6px 16px;
-      font-size: 12px;
+@media (max-width: $breakpoint-mobile) {
+  .companyinfo {
+    padding: 40px 0 20px;
+
+    &__title {
+      font-size: 28px;
+      margin-bottom: 25px;
+    }
+
+    &__types {
+      gap: 10px;
     }
   }
 }

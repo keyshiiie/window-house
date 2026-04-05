@@ -64,11 +64,11 @@ $gap-xxl: 90px;
 $gap-xxxl: 126px; 
 
 // БРЕЙКПОИНТЫ 
-$breakpoint-mobile: 576px;
-$breakpoint-tablet: 768px;
-$breakpoint-desktop: 1024px;
-$breakpoint-wide: 1280px;
-$breakpoint-hd: 1440px;
+$breakpoint-mobile: 576px;   // Мобильные устройства
+$breakpoint-tablet: 768px;   // Планшеты
+$breakpoint-desktop: 1024px; // Десктопы
+$breakpoint-wide: 1200px;    // Широкие экраны
+$breakpoint-large: 1400px;
 
 // РАДИУСЫ
 $border-radius-sm: 4px;

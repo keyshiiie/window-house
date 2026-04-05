@@ -5,17 +5,16 @@
 
 .main {
   padding: 60px 0;
-  margin-top: 70px; // отсутп под хедер
-  position: relative; // для позиционирования псевдоэлемента
+  margin-top: 70px;
+  position: relative;
 
-  // Фоновое изображение
   &::before {
     content: '';
     position: absolute;
-    top: 0; // поднимаем выше, чтобы зайти под header__bottom
+    top: 0;
     left: 0;
     width: 100%;
-    height: calc(100%); // увеличиваем высоту
+    height: 100%;
     background-image: url('/public/images/main-background.jpg');
     background-size: cover;
     background-position: center;
@@ -26,28 +25,83 @@
   &__row {
     padding: 0 60px;
     @include flex(space-between, center);
+    gap: 40px;
+    
+    // Планшеты
+    @media (max-width: $breakpoint-tablet) {
+      padding: 0 30px;
+      gap: 30px;
+    }
+    
+    // Мобилки
+    @media (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+      padding: 0;
+      gap: 40px;
+    }
+  }
+
+  &__hero {
+    flex: 1;
+    
+    @media (max-width: $breakpoint-mobile) {
+      width: 100%;
+      text-align: center;
+    }
   }
 
   &__subtitle {
     @include font-style(bold, xl);
     color: $color-primary;
+    
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 18px;
+    }
   }
 
   &__title {
     @include font-style(regular, xxxl);
     color: $color-white;
     max-width: 520px;
+    
+    @media (max-width: $breakpoint-tablet) {
+      max-width: 100%;
+      font-size: 32px;
+    }
+    
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 28px;
+      padding: 0 10px;
+      margin-bottom: 30px;
+    }
   }
 }
 
 // Блок преимуществ
-.quality{
+.quality {
   margin-top: $gap-sm;
+  
+  @media (max-width: $breakpoint-mobile) {
+    margin-top: 20px;
+  }
 
   &__grid {
     @include flex(space-between, center);
     gap: $gap-base;
-
+    
+    // Планшеты
+    @media (max-width: $breakpoint-tablet) {
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    // Мобилки - одна колонка
+    @media (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+    }
   }
 }
 
@@ -55,11 +109,26 @@
 .qualityCard {
   max-width: 170px;
   @include flex(space-between, start, column);
+  
+  @media (max-width: $breakpoint-tablet) {
+    max-width: 150px;
+  }
+  
+  @media (max-width: $breakpoint-mobile) {
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+  }
 
   &__icon {
     width: auto;
-    height: 80px;
+    height: 100px; // было 80px - увеличили
     margin-bottom: $gap-sm;
+    
+    @media (max-width: $breakpoint-mobile) {
+      height: 80px; // было 60px - увеличили
+      margin-bottom: 15px;
+    }
 
     img {
       width: 100%;
@@ -71,10 +140,20 @@
   &__description {
     color: $color-white;
     @include font-style(regular, sm);
-
-
+    
     @media (max-width: $breakpoint-tablet) {
       font-size: $font-size-xs;
     }
+    
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 14px;
+    }
+  }
+}
+
+// Форма на мобилках будет под геро-секцией
+.formWrapper {
+  @media (max-width: $breakpoint-mobile) {
+    width: 100%;
   }
 }

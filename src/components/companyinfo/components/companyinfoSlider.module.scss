@@ -17,3 +17,10 @@
 .companyinfo-card {
   background: $color-white;
 }
+
+@media (max-width: $breakpoint-mobile) {
+  .companyinfo-slider {
+    position: relative;
+    margin: 30px 0;
+  }
+}

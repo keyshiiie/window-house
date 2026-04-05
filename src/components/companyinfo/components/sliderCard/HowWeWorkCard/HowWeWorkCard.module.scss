@@ -8,6 +8,15 @@
 
   &__grid{
     @include flex(space-between, center);
+
+    @media (max-width: $breakpoint-tablet) {
+    }
+    
+    @media (max-width: $breakpoint-mobile) {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: $gap-base;
+    }
   }
 
   &__title {

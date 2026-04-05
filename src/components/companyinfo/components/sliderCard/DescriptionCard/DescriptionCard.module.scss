@@ -7,18 +7,58 @@
   &__content {
     @include flex(space-between, stretch);
     align-items: stretch;
+    
+    // Планшеты
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
+      gap: $gap-lg;
+    }
+    
+    // Мобилки
+    @media (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+      gap: $gap-sm;
+    }
   }
 
   &__header {
     @include flex(space-between, stretch);
     align-items: stretch;
     padding: 50px;
+    
+    @media (max-width: $breakpoint-tablet) {
+      padding: 30px;
+      flex-direction: column;
+      gap: $gap-md;
+    }
+    
+    @media (max-width: $breakpoint-mobile) {
+      padding: 20px;
+      flex-direction: column;
+      gap: $gap-sm;
+    }
   }
 
   &__image {
     width: 200px;
     height: 140px;
     align-self: flex-start;
+    
+    @media (max-width: $breakpoint-tablet) {
+      width: 180px;
+      height: 120px;
+    }
+    
+    @media (max-width: $breakpoint-mobile) {
+      width: 100%;
+      height: auto;
+      align-self: center;
+      
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
     
     img {
       width: 100%;
@@ -32,16 +72,67 @@
     @include font-style(regular, base);
     align-self: flex-end;
     flex: 1;
+    
+    @media (max-width: $breakpoint-tablet) {
+      max-width: 100%;
+      align-self: flex-start;
+    }
+    
+    @media (max-width: $breakpoint-mobile) {
+      max-width: 100%;
+      align-self: flex-start;
+      font-size: $font-size-sm;
+    }
   }
 
   &__video {
     align-self: center;
     flex-shrink: 0;
     
+    @media (max-width: $breakpoint-tablet) {
+      width: 100%;
+      align-self: center;
+    }
+    
+    @media (max-width: $breakpoint-mobile) {
+      width: 100%;
+      align-self: center;
+    }
+    
     .videoPlayer {
       max-width: 100%;
       height: auto;
       display: block;
+      
+      @media (max-width: $breakpoint-tablet) {
+        width: 100%;
+      }
+      
+      @media (max-width: $breakpoint-mobile) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Альтернативный вариант, если нужно изменить порядок элементов на мобилках
+@media (max-width: $breakpoint-mobile) {
+  .descriptionCard {
+    &__header {
+      flex-direction: column;
+    }
+    
+    &__image {
+      order: 1;
+    }
+    
+    &__text {
+      margin-top: 20px;
+      order: 2;
+    }
+    
+    &__video {
+      order: 3;
     }
   }
 }

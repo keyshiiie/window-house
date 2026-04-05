@@ -10,4 +10,20 @@
     @extend %section-title;
     margin-bottom: 40px;
   }
+  
+  @media (max-width: $breakpoint-tablet) {
+    padding: 40px 0;
+    
+    &__title {
+      margin-bottom: 30px;
+    }
+  }
+  
+  @media (max-width: $breakpoint-mobile) {
+    padding: 30px 0;
+    
+    &__title {
+      margin-bottom: 20px;
+    }
+  }
 }

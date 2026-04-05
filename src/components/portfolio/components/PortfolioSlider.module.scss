@@ -18,12 +18,12 @@
     grid-template-columns: repeat(4, 1fr);
     gap: $gap-sm;
     
-    @media (max-width: 1024px) {
+    @media (max-width: $breakpoint-desktop) {
       grid-template-columns: repeat(2, 1fr);
       gap: $gap-xxs;
     }
     
-    @media (max-width: 640px) {
+    @media (max-width: $breakpoint-mobile) {
       grid-template-columns: 1fr;
       gap: $gap-xxs;
     }
@@ -190,7 +190,7 @@
 }
 
 // Адаптивность для стрелок
-@media (max-width: 1200px) {
+@media (max-width: $breakpoint-wide) {
   .portfolio-slider {
     &__arrow {
       &--prev {
@@ -203,7 +203,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-tablet) {
   .portfolio-slider {
     &__arrow {
       width: 36px;

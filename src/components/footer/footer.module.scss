@@ -1,3 +1,4 @@
+// src/components/contacts/footer.module.scss
 @use '../../scss/abstracts/variables' as *;
 @use '../../scss/abstracts/mixins' as *;
 @use '../../scss/abstracts/placeholders' as *;
@@ -6,35 +7,97 @@
   background: $color-secondary;
   padding: 50px 0;
 
-  &__content{
+  &__content {
     @include flex(space-between, center);
+    
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
+      gap: $gap-lg;
+    }
+    
+    @media (max-width: $breakpoint-mobile) {
+      gap: $gap-md;
+    }
   }
 
-  &__logo{
+  &__logo {
     @include flex(space-between, center);
     gap: $gap-sm;
+    
+    @media (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+      text-align: center;
+      gap: $gap-xs;
+    }
   }
 
-  &__icon{
+  &__icon {
     width: 55px;
+    
+    @media (max-width: $breakpoint-mobile) {
+      width: 45px;
+    }
   }
 
-  &__text{
+  &__text {
     @include font-style(regular, base);
     color: $color-white;
+    
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 14px;
+    }
+    
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 12px;
+    }
   }
 
-  &__data{
+  &__data {
     @include flex(space-between, center);
     gap: $gap-sm;
+    
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
+      gap: $gap-xs;
+      text-align: center;
+    }
   }
 
-  &__link{
+  &__link {
     @include font-style(regular, sm);
     color: $color-white;
+    text-decoration: none;
+    transition: $transition-slow;
+    
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 13px;
+    }
+    
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 11px;
+    }
 
-    &:hover{
+    &:hover {
       color: $color-primary;
+    }
+  }
+}
+
+// Дополнительные улучшения для очень маленьких экранов
+@media (max-width: 375px) {
+  .footer {
+    padding: 30px 0;
+    
+    &__icon {
+      width: 40px;
+    }
+    
+    &__text {
+      font-size: 11px;
+    }
+    
+    &__link {
+      font-size: 10px;
     }
   }
 }

@@ -26,7 +26,7 @@ const Products: React.FC = () => {
 
   return (
     <section className={styles.products} id='products'>
-      <div className={styles.products__container}>
+      <div className="container">
         <div className={styles.products__header}>
           <h2 className={styles.products__title}>Продукция</h2>
           <div className={styles.products__types}>

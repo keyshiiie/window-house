@@ -4,256 +4,309 @@
 @use '../../scss/abstracts/placeholders' as *;
 
 .serviceDetailModal{
-    padding: 50px 100px;
-    background-color: $color-white;
+  padding: 50px 100px;
+  background-color: $color-white;
 
-    &__top{
-        @include flex(space-between, center);
-        column-gap: $gap-xxl;
-        margin-bottom: $gap-base;
-    }
+  &__top{
+    @include flex(space-between, center);
+    column-gap: $gap-xxl;
+    margin-bottom: $gap-base;
+  }
 
-    &__header{
-        display: grid;
-        row-gap: $gap-sm;
-        flex: 1;
-    }
+  &__header{
+    display: grid;
+    row-gap: $gap-sm;
+    flex: 1;
+  }
 
-    &__title{
-        @include font-style(bold, xl);
-        color: $color-secondary;
-    }
-    
-    &__description{
-        @include font-style(regular, base);
-        color: $color-black;
-        max-width: 500px;
-    }
+  &__title{
+    @include font-style(bold, xl);
+    color: $color-secondary;
+  }
+  
+  &__description{
+    @include font-style(regular, base);
+    color: $color-black;
+    max-width: 500px;
+  }
 
-    &__buttons{
-        display: flex;
-        column-gap: $gap-xxs;
-    }
+  &__buttons{
+    display: flex;
+    column-gap: $gap-xxs;
+  }
 
-    // Секция с дополнительными возможностями
-    &__features {
-        margin-top: $gap-xl;
-    }
+  // Секция с дополнительными возможностями
+  &__features {
+    margin-top: $gap-xl;
+  }
 
-    &__featuresTitle {
-        @include font-style(bold, lg);
-        color: $color-secondary;
-        margin-bottom: $gap-base;
-    }
+  &__featuresTitle {
+    @include font-style(bold, lg);
+    color: $color-secondary;
+    margin-bottom: $gap-base;
+  }
 
-    &__featuresGrid{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: $gap-base;
-    }
+  &__featuresGrid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $gap-base;
+  }
 
-    // Карточка - фиксированная структура
-    &__featureCard{
-        display: flex;
-        align-items: center;
-        gap: $gap-xxs;
-        min-height: 90px; // фиксированная минимальная высота
-    }
+  // Карточка - фиксированная структура
+  &__featureCard{
+    display: flex;
+    align-items: center;
+    gap: $gap-xxs;
+    min-height: 90px;
+  }
 
-    // Контейнер для иконки - фиксированный размер
-    &__featureIcon{
-        width: 70px;      // фиксированная ширина
-        height: 70px;     // фиксированная высота
-        flex-shrink: 0;   // запрещаем сжиматься
-        display: flex;
-        align-items: center;
-        justify-content: center;
+  // Контейнер для иконки - фиксированный размер
+  &__featureIcon{
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
+  }
 
-    // Контейнер для текста - занимает оставшееся пространство
-    &__featureContent {
-        flex: 1;
-        min-width: 0; // позволяет тексту переноситься
-    }
+  // Контейнер для текста - занимает оставшееся пространство
+  &__featureContent {
+    flex: 1;
+    min-width: 0;
+  }
 
-    &__featureTitle{
-        @include font-style(bold, sm);
-        color: $color-secondary;
-        margin-bottom: $gap-xss;
-        line-height: $line-height-normal;
-    }
+  &__featureTitle{
+    @include font-style(bold, sm);
+    color: $color-secondary;
+    margin-bottom: $gap-xss;
+    line-height: $line-height-normal;
+  }
 
-    &__featureDescription{
-        @include font-style(regular, sm);
-        color: $color-black;
-        line-height: $line-height-normal;
-    }
+  &__featureDescription{
+    @include font-style(regular, sm);
+    color: $color-black;
+    line-height: $line-height-normal;
+  }
 }
 
 // Слайдер
-// Слайдер
 .slider {
-    margin: $gap-xl 0;
+  margin: $gap-xl 0;
+  position: relative;
+  width: calc(100% + 200px); // Растягиваем на всю ширину модалки (компенсируем паддинги)
+  margin-left: -100px; // Сдвигаем влево на величину паддинга
+  margin-right: -100px; // Сдвигаем вправо на величину паддинга
+  
+  &__main {
     position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    width: 100%;
     
-    &__main {
-        position: relative;
-        cursor: pointer;
-        overflow: hidden;
-        
-        &:hover {
-            .slider__prev,
-            .slider__next {
-                opacity: 1;
-            }
-        }
+    &:hover {
+      .slider__prev,
+      .slider__next {
+          opacity: 1;
+      }
+    }
+  }
+  
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    display: block;
+  }
+  
+  // Кнопки навигации (стрелки)
+  &__prev,
+  &__next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: $transition-slow;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    opacity: 0;
+    
+    &:hover {
+      background: $color-primary;
+      transform: translateY(-50%) scale(1.05);
     }
     
-    &__image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        pointer-events: none; // Чтобы клики проходили на родительский элемент
-        display: block;
+    @media (max-width: $breakpoint-tablet) {
+      width: 32px;
+      height: 32px;
+      font-size: 18px;
+      opacity: 0.7;
+    }
+  }
+  
+  &__prev {
+    left: 20px;
+  }
+  
+  &__next {
+    right: 20px;
+  }
+  
+  // Кружочки (точки) - поверх слайдера
+  &__dots {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: $gap-xs;
+    z-index: 10;
+    margin: 0;
+    padding: 0;
+  }
+  
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    border: none;
+    cursor: pointer;
+    transition: $transition-slow;
+    padding: 0;
+    
+    &:hover {
+      background: $color-primary;
+      transform: scale(1.2);
     }
     
-    // Кнопки навигации (стрелки)
-    &__prev,
-    &__next {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 40px;
-        height: 40px;
-        background: rgba(0, 0, 0, 0.5);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: $transition-slow;
-        font-size: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10;
-        opacity: 0;
-        
-        &:hover {
-            background: $color-primary;
-            transform: translateY(-50%) scale(1.05);
-        }
-        
-        @media (max-width: $breakpoint-tablet) {
-            width: 32px;
-            height: 32px;
-            font-size: 18px;
-            opacity: 0.7;
-        }
+    &Active {
+      background: $color-primary;
+      width: 12px;
+      height: 12px;
     }
-    
-    &__prev {
-        left: 20px;
-    }
-    
-    &__next {
-        right: 20px;
-    }
-    
-    // Кружочки (точки) - поверх слайдера
-    &__dots {
-        position: absolute;
-        bottom: 20px; // отступ снизу 20px от края слайда
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: center;
-        gap: $gap-xs;
-        z-index: 10;
-        margin: 0;
-        padding: 0;
-    }
-    
-    &__dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.6);
-        border: none;
-        cursor: pointer;
-        transition: $transition-slow;
-        padding: 0;
-        
-        &:hover {
-            background: $color-primary;
-            transform: scale(1.2);
-        }
-        
-        &Active {
-            background: $color-primary;
-            width: 12px;
-            height: 12px;
-        }
-    }
+  }
 }
 
 
 // Адаптив для планшетов
 @media (max-width: $breakpoint-tablet) {
-    .serviceDetailModal {
-        padding: 30px 20px;
-        
-        &__top {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: $gap-base;
-        }
-        
-        &__buttons {
-            width: 100%;
-            
-            button {
-                flex: 1;
-            }
-        }
-        
-        &__featuresGrid {
-            grid-template-columns: 1fr;
-            gap: $gap-sm;
-        }
-        
-        &__featureCard {
-            min-height: auto;
-        }
-        
-        &__featureIcon {
-            width: 60px;
-            height: 60px;
-        }
+  .serviceDetailModal {
+    padding: 30px 20px;
+    
+    &__top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $gap-base;
+      width: 100%;
+      margin-bottom: 0;
     }
+    
+    &__buttons {
+      display: grid;
+      gap: $gap-xs;
+      width: 100%;
+      
+      button {
+        flex: 1;
+      }
+    }
+
+    &__features {
+      margin-top: 30px;
+    }
+    
+    &__featuresGrid {
+      grid-template-columns: 1fr;
+      gap: $gap-sm;
+    }
+    
+    &__featureCard {
+      min-height: auto;
+    }
+    
+    &__featureIcon {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  
+  // Адаптив слайдера для планшетов
+  .slider {
+    width: calc(100% + 40px); // Компенсируем паддинги 20px с каждой стороны
+    margin-left: -20px;
+    margin-right: -20px;
+  }
 }
 
 // Адаптив для мобильных
 @media (max-width: $breakpoint-mobile) {
-    .serviceDetailModal {
-        padding: 20px 15px;
-        
-        &__featureIcon {
-            width: 50px;
-            height: 50px;
-        }
-        
-        &__featureTitle {
-            font-size: $font-size-xs;
-        }
-        
-        &__featureDescription {
-            font-size: $font-size-xs;
-        }
+  .serviceDetailModal {
+    padding: 20px 15px;
+    
+    &__featureIcon {
+      width: 50px;
+      height: 50px;
     }
+    
+    &__featureTitle {
+      font-size: $font-size-xs;
+    }
+    
+    &__featureDescription {
+      font-size: $font-size-xs;
+    }
+  }
+  
+  // Адаптив слайдера для мобилок - растягиваем и уменьшаем отступ снизу
+  .slider {
+    width: 100%; // Компенсируем паддинги 15px с каждой стороны
+    margin: 20px 0 0;
+    
+    &__dots {
+      bottom: 10px; // Уменьшаем отступ точек от низа
+    }
+    
+    &__prev,
+    &__next {
+      width: 28px;
+      height: 28px;
+      font-size: 16px;
+    }
+    
+    &__prev {
+      left: 10px;
+    }
+    
+    &__next {
+      right: 10px;
+    }
+    
+    &__dot {
+      width: 8px;
+      height: 8px;
+      
+      &Active {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
 }

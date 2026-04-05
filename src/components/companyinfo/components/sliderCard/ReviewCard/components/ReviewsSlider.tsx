@@ -15,6 +15,8 @@ const ReviewsSlider: React.FC<ReviewsSliderProps> = ({
   onLeaveReview 
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
   
   const totalSlides = reviews.length;
 
@@ -28,6 +30,33 @@ const ReviewsSlider: React.FC<ReviewsSliderProps> = ({
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
+  };
+
+  // Обработчики свайпов
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+    
+    if (isLeftSwipe) {
+      goToNext();
+    }
+    if (isRightSwipe) {
+      goToPrev();
+    }
+    
+    setTouchStart(0);
+    setTouchEnd(0);
   };
 
   const currentReview = reviews[currentIndex];
@@ -49,7 +78,12 @@ const ReviewsSlider: React.FC<ReviewsSliderProps> = ({
           </button>
         )}
         
-        <div className={styles['reviews-slider__content']}>
+        <div 
+          className={styles['reviews-slider__content']}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div className={styles['review-card']}>
             <div className={styles['review-header']}>
               <div className={styles['review-header__text']}>
