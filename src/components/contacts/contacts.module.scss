@@ -6,18 +6,35 @@
 .contacts {
   padding: 60px 0;
   background: $color-gray-200;
+  overflow: hidden;
 
   &__title {
     @extend %section-title;
   }
 
   &__wrapper {
-    
+    @include flex(space-between, top);
+
   }
 
   &__info {
     display: grid;
     gap: $gap-xxs;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 20%;
+      right: -50%;
+      width: 90%;
+      height: 100%;
+      background-image: url(/public/images/contact-bg.png);
+      background-size: cover;
+      background-position: center;
+      pointer-events: none;
+      z-index: 0;
+    }
   }
 
   &__subtitle {
@@ -37,11 +54,20 @@
   &__phone {
     @include font-style(bold, lg);
     color: $color-black;
+    &:hover{
+      transition: $transition-slow;
+      color: $color-primary;
+    }
   }
 
   &__addressText, &__emailLink {
     @include font-style(regular, md);
     color: $color-black;
+    
+    &:hover{
+      transition: $transition-slow;
+      color: $color-primary;
+    }
   }
 
   &__description {

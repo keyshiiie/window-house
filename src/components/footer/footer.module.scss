@@ -1,0 +1,40 @@
+@use '../../scss/abstracts/variables' as *;
+@use '../../scss/abstracts/mixins' as *;
+@use '../../scss/abstracts/placeholders' as *;
+
+.footer {
+  background: $color-secondary;
+  padding: 50px 0;
+
+  &__content{
+    @include flex(space-between, center);
+  }
+
+  &__logo{
+    @include flex(space-between, center);
+    gap: $gap-sm;
+  }
+
+  &__icon{
+    width: 55px;
+  }
+
+  &__text{
+    @include font-style(regular, base);
+    color: $color-white;
+  }
+
+  &__data{
+    @include flex(space-between, center);
+    gap: $gap-sm;
+  }
+
+  &__link{
+    @include font-style(regular, sm);
+    color: $color-white;
+
+    &:hover{
+      color: $color-primary;
+    }
+  }
+}

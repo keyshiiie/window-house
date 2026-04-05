@@ -7,6 +7,7 @@ import Companyinfo from './components/companyinfo/companyinfo';
 import Portfolio from './components/portfolio/portfolio';
 import FAQ from './components/faq/FAQ';
 import Contacts from './components/contacts/contacts';
+import Footer from './components/footer/footer';
 
 import './App.css'
 
@@ -21,8 +22,7 @@ const App: React.FC = () => {
       <Portfolio/>
       <FAQ/>
       <Contacts/>
-      <footer>
-      </footer>
+      <Footer/>
     </div>
   );
 };

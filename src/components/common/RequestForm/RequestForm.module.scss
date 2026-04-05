@@ -30,23 +30,23 @@
     padding: 12px 15px;
     background: $color-gray-300;
     border: 1px solid $color-gray-300;
-    border-radius: $border-radius-md;
+    border-radius: $border-radius-sm;
     @include font-style(regular, sm);
     color: $color-primary;
     transition: $transition-fast;
         
     &:focus {
-        outline: none;
-        border-color: $color-primary;
+      outline: none;
+      border-color: $color-primary;
     }
         
     &:disabled {
-        background-color: $color-gray-100;
-        cursor: not-allowed;
+      background-color: $color-gray-100;
+      cursor: not-allowed;
     }
 
     &::placeholder{
-        color: $color-secondary-smooth;
+      color: $color-secondary-smooth;
     }
   }
   
@@ -155,7 +155,7 @@
     margin: 0;
     @include font-style(regular, xs);
     line-height: 120%;
-    color: #000000;
+    color: $color-black;
     cursor: pointer;
     
     &:hover {
@@ -193,14 +193,72 @@
     }
   }
   
+  &__textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background: $color-gray-300;
+    border: 1px solid $color-gray-300;
+    border-radius: $border-radius-md;
+    @include font-style(regular, sm);
+    color: $color-primary;
+    transition: $transition-fast;
+    resize: vertical;
+        
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+    }
+        
+    &:disabled {
+      background-color: $color-gray-100;
+      cursor: not-allowed;
+    }
+
+    &::placeholder {
+      color: $color-secondary-smooth;
+    }
+  }
+  
   // Варианты стилей
   &--white {
+    .requestForm__button {
+    @include button-fill($color-secondary, $color-secondary-dark);
+    }
+
+    .requestForm__input {
+      color: $color-secondary;
+      &:focus {
+        outline: none;
+        border-color: $color-secondary;
+      }
+    }
+    .requestForm__textarea {
+      color: $color-secondary;
+      &:focus {
+        outline: none;
+        border-color: $color-secondary;
+      }
+    }
   }
   
   &--orange {
   }
   
   &--main {
-    
+    .requestForm__input {
+      color: $color-secondary;
+      &:focus {
+        outline: none;
+        border-color: $color-secondary;
+      }
+    }
+    .requestForm__textarea {
+      color: $color-secondary;
+      &:focus {
+        outline: none;
+        border-color: $color-secondary;
+      }
+    }
   }
+  
 }

@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import type { CompanyinfoTypes } from '../types/companyinfo.types';
 import { DescriptionCard } from './sliderCard/DescriptionCard/DescriptionCard';
 import { HowWeWorkCard } from './sliderCard/HowWeWorkCard/HowWeWorkCard';
+import { CertificateCard } from './sliderCard/CertificateCard/CertificateCard';
+import { ReviewCard } from './sliderCard/ReviewCard/ReviewCard';
 import styles from './companyinfoSlider.module.scss';
 
 interface CompanyinfoSliderProps {
@@ -23,11 +25,9 @@ const CompanyinfoSlider: React.FC<CompanyinfoSliderProps> = ({ activeType: exter
       case 'Как мы работаем':
         return <HowWeWorkCard/>;
       case 'Отзывы':
-        // TODO: добавить компонент ReviewsCard
-        return <div>Отзывы - в разработке</div>;
+        return <ReviewCard/>;
       case 'Сертификаты':
-        // TODO: добавить компонент CertificatesCard
-        return <div>Сертификаты - в разработке</div>;
+        return <CertificateCard/>;
       default:
         return <div>Нет информации</div>;
     }

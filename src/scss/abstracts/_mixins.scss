@@ -62,8 +62,8 @@
     @include font-style(bold, sm);
     
     &:hover {
-        background: $hover-color;
-        border-color: $hover-color;
+      background: $hover-color;
+      border-color: $hover-color;
     }
 }
 

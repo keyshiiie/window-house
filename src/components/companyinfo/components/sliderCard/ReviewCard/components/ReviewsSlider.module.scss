@@ -1,0 +1,188 @@
+// src/components/reviews/components/ReviewsSlider.module.scss
+@use '../../../../../../scss/abstracts/variables' as *;
+@use '../../../../../../scss/abstracts/mixins' as *;
+@use '../../../../../../scss/abstracts/placeholders' as *;
+
+.reviews-slider {
+  position: relative;
+
+  &__container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  &__content {
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background: none;
+    cursor: pointer;
+    @include flex(center, center);
+    transition: all 0.3s ease;
+    z-index: 10;
+    border: none;
+    padding: 0;
+
+    svg {
+      transition: all 0.3s ease;
+    }
+
+    &--prev {
+      left: -70px;
+    }
+
+    &--next {
+      right: -70px;
+    }
+
+    &:hover:not(:disabled) {
+      transform: translateY(-50%) scale(1.05);
+      
+      svg path {
+        stroke: $color-secondary !important;
+      }
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(-50%) scale(0.95);
+    }
+  }
+
+  .review-card {
+    background: $color-white;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .review-header {
+    @include flex(space-between, center);
+    gap: $gap-xl;
+    margin-bottom: 60px;
+
+    &__text{
+      @include flex($align:center);
+      gap: $gap-xl;
+    }
+  }
+
+  .review-name {
+    @include font-style(bold, md);
+    color: $color-secondary;
+  }
+
+  .review-meta {
+    @include flex($align:top);
+    gap: $gap-base;
+    @include font-style(regular, sm);
+    color: $color-gray-400;
+  }
+  .review-text {
+    padding: 0 100px;
+    text-align: justify;
+    p {
+      @include font-style(regular, base);
+      color: $color-black;
+    }
+  }
+
+  .leave-review-btn {
+    padding: 14px 32px;
+    @include button-fill($color-primary, $color-primary-dark, $color-white, );
+    @include button-with-icon('icons/review.svg');
+    @extend %base-button;
+    justify-content: end;
+  }
+
+  &__dots {
+    @include flex(center, center);
+    gap: 12px;
+    margin-top: 40px;
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ddd;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+
+      &:hover {
+        background: #999;
+      }
+
+      &--active {
+        width: 30px;
+        border-radius: 5px;
+        background: $color-secondary;
+      }
+    }
+  }
+}
+
+// Адаптивность для стрелок
+@media (max-width: 1200px) {
+  .reviews-slider {
+    &__arrow {
+      &--prev {
+        left: 10px;
+      }
+      &--next {
+        right: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews-slider {
+    &__arrow {
+      width: 36px;
+      height: 36px;
+      
+      svg {
+        width: 16px;
+        height: 30px;
+      }
+    }
+    
+    .review-card {
+      padding: 24px;
+    }
+    
+    .review-name {
+      font-size: 20px;
+    }
+    
+    .review-meta {
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+    
+    .review-text p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    &__dots {
+      margin-top: 30px;
+      
+      .dot {
+        width: 8px;
+        height: 8px;
+        
+        &--active {
+          width: 24px;
+        }
+      }
+    }
+  }
+}

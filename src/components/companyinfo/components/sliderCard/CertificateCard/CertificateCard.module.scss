@@ -1,0 +1,13 @@
+@use '../../../../../scss/abstracts/variables' as *;
+@use '../../../../../scss/abstracts/mixins' as *;
+@use '../../../../../scss/abstracts/placeholders' as *;
+
+.certificates {
+  padding: 90px 0;
+  background: #fafafa;
+
+  &__title {
+    @extend %section-title;
+    margin-bottom: 40px;
+  }
+}

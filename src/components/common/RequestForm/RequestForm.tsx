@@ -8,12 +8,18 @@ const RequestForm: React.FC<RequestFormProps> = ({
   buttonText, 
   variant = 'white',
   onSubmit,
-  className 
+  className,
+  showPhone = true,
+  showComment = false,
+  commentPlaceholder = 'Ваш комментарий',
+  consentText = 'Согласен на обработку персональных данных в соответствии с политикой конфиденциальности',
+  requiredFields = ['name', 'phone', 'email', 'consent']
 }) => {
   const [formData, setFormData] = useState<RequestFormData>({
     name: '',
     phone: '',
     email: '',
+    comment: '',
     consent: false
   });
   
@@ -22,23 +28,27 @@ const RequestForm: React.FC<RequestFormProps> = ({
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
     
-    if (!formData.name.trim()) {
+    if (requiredFields.includes('name') && !formData.name.trim()) {
       newErrors.name = 'Введите ваше имя';
     }
     
-    if (!formData.phone.trim()) {
+    if (requiredFields.includes('phone') && !formData.phone?.trim()) {
       newErrors.phone = 'Введите номер телефона';
-    } else if (!/^[\d\s\+\(\)\-]{10,}$/.test(formData.phone)) {
+    } else if (requiredFields.includes('phone') && formData.phone && !/^[\d\s\+\(\)\-]{10,}$/.test(formData.phone)) {
       newErrors.phone = 'Введите корректный номер';
     }
     
-    if (!formData.email.trim()) {
+    if (requiredFields.includes('email') && !formData.email.trim()) {
       newErrors.email = 'Введите email';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    } else if (requiredFields.includes('email') && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Введите корректный email';
     }
     
-    if (!formData.consent) {
+    if (requiredFields.includes('comment') && !formData.comment?.trim()) {
+      newErrors.comment = 'Введите комментарий';
+    }
+    
+    if (requiredFields.includes('consent') && !formData.consent) {
       newErrors.consent = 'Необходимо дать согласие';
     }
     
@@ -76,16 +86,18 @@ const RequestForm: React.FC<RequestFormProps> = ({
           {errors.name && <span className={styles.requestForm__error}>{errors.name}</span>}
         </div>
         
-        <div className={styles.requestForm__field}>
-          <input
-            type="tel"
-            placeholder="Номер телефона"
-            value={formData.phone}
-            onChange={(e) => handleChange('phone', e.target.value)}
-            className={`${styles.requestForm__input} ${errors.phone ? styles.requestForm__inputError : ''}`}
-          />
-          {errors.phone && <span className={styles.requestForm__error}>{errors.phone}</span>}
-        </div>
+        {showPhone && (
+          <div className={styles.requestForm__field}>
+            <input
+              type="tel"
+              placeholder="Номер телефона"
+              value={formData.phone}
+              onChange={(e) => handleChange('phone', e.target.value)}
+              className={`${styles.requestForm__input} ${errors.phone ? styles.requestForm__inputError : ''}`}
+            />
+            {errors.phone && <span className={styles.requestForm__error}>{errors.phone}</span>}
+          </div>
+        )}
         
         <div className={styles.requestForm__field}>
           <input
@@ -98,16 +110,28 @@ const RequestForm: React.FC<RequestFormProps> = ({
           {errors.email && <span className={styles.requestForm__error}>{errors.email}</span>}
         </div>
         
+        {showComment && (
+          <div className={styles.requestForm__field}>
+            <textarea
+              placeholder={commentPlaceholder}
+              value={formData.comment}
+              onChange={(e) => handleChange('comment', e.target.value)}
+              className={`${styles.requestForm__textarea} ${errors.comment ? styles.requestForm__inputError : ''}`}
+              rows={4}
+            />
+            {errors.comment && <span className={styles.requestForm__error}>{errors.comment}</span>}
+          </div>
+        )}
+        
         <label className={styles.requestForm__checkbox}>
           <input
             type="checkbox"
             checked={formData.consent}
             onChange={(e) => handleChange('consent', e.target.checked)}
           />
-          <span></span> {/* Это кастомный чекбокс */}
+          <span></span>
           <span className={styles.requestForm__checkboxText}>
-            Согласен на обработку персональных данных 
-            в соответствии с <a href="/privacy">политикой конфиденциальности</a>
+            {consentText}
           </span>
         </label>
         {errors.consent && <span className={styles.requestForm__error}>{errors.consent}</span>}

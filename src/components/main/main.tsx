@@ -27,6 +27,8 @@ const Main: React.FC = () => {
                     title="Вызвать замерщика на дом"
                     buttonText="Отправить заявку"
                     variant="main"
+                    showPhone={true}
+                    showComment={false}
                     onSubmit={handleSubmit}
                   />
               </div>

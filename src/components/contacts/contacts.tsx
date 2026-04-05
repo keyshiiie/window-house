@@ -1,8 +1,14 @@
 // src/components/contacts/contacts.tsx
 import React from 'react';
 import styles from './contacts.module.scss';
+import RequestForm from '../common/RequestForm/RequestForm.tsx';
+import type {RequestFormData} from '../common/RequestForm/types.ts';
 
 const Contacts: React.FC = () => {
+  const handleSubmit = (data: RequestFormData) => {
+    console.log('Данные формы:', data);
+  };
+
   return (
     <section className={styles.contacts} id='contacts'>
       <div className={"container"}>
@@ -56,7 +62,14 @@ const Contacts: React.FC = () => {
           </div>
           
           <div className={styles.contacts__form}>
-            {/* Здесь будет форма */}
+            <RequestForm
+              title="Остались вопросы?"
+              buttonText="Отправить сообщение"
+              variant="white"
+              showPhone={false}
+              showComment={true}
+              onSubmit={handleSubmit}
+            />
           </div>
         </div>
       </div>
