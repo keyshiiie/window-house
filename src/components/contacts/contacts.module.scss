@@ -53,10 +53,10 @@
     &::before {
       content: "";
       position: absolute;
-      top: 20%;
-      right: -50%;
-      width: 90%;
-      height: 100%;
+      top: 25%;
+      right: -7%;
+      width: 58%;
+      height: 91%;
       background-image: url(/public/images/contact-bg.png);
       background-size: cover;
       background-position: center;
@@ -207,7 +207,6 @@
   }
   
   &__form {
-    flex: 1;
     
     @media (max-width: $breakpoint-tablet) {
       width: 100%;

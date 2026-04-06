@@ -64,8 +64,7 @@
 
   &__actions {
     display: flex;
-    justify-content: center;  
-    margin-top: 80px;
+    justify-content: center;
     
     @media (max-width: $breakpoint-tablet) {
       margin-top: 50px;

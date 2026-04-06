@@ -98,11 +98,8 @@
 
 // Слайдер
 .slider {
-  margin: $gap-xl 0;
+  margin: 0;
   position: relative;
-  width: calc(100% + 200px); // Растягиваем на всю ширину модалки (компенсируем паддинги)
-  margin-left: -100px; // Сдвигаем влево на величину паддинга
-  margin-right: -100px; // Сдвигаем вправо на величину паддинга
   
   &__main {
     position: relative;
@@ -220,12 +217,13 @@
     }
     
     &__buttons {
-      display: grid;
+      display: flex;
       gap: $gap-xs;
       width: 100%;
       
       button {
-        flex: 1;
+        flex: 0 1 auto; 
+        min-width: 120px;
       }
     }
 
@@ -250,9 +248,8 @@
   
   // Адаптив слайдера для планшетов
   .slider {
-    width: calc(100% + 40px); // Компенсируем паддинги 20px с каждой стороны
-    margin-left: -20px;
-    margin-right: -20px;
+    margin: 30px 0 0;
+    width: calc(100% + 0px); // Растягиваем на всю ширину модалки (компенсируем паддинги)
   }
 }
 
@@ -273,6 +270,24 @@
     &__featureDescription {
       font-size: $font-size-xs;
     }
+
+    &__buttons {
+      display: grid;
+      gap: $gap-xs;
+      width: 100%;
+      justify-content: center; // Центрируем сетку по горизонтали
+      
+      button {
+        flex: 0 1 auto; 
+        min-width: 120px;
+        
+        // Центрируем содержимое внутри кнопки
+        @include flex(center,center);
+        text-align: center;
+        
+      }
+    }
+
   }
   
   // Адаптив слайдера для мобилок - растягиваем и уменьшаем отступ снизу
