@@ -3,12 +3,14 @@ import React from 'react';
 import styles from './footer.module.scss';
 
 const Footer: React.FC = () => {
+  const base = import.meta.env.BASE_URL;
+
   return (
     <footer className={styles.footer} id='footer'>
       <div className={"container"}>
         <div className={styles.footer__content}>
           <div className={styles.footer__logo}>
-            <img src="/public/icons/logo-footer.svg" alt="Логотип Окна Хаус" className={styles.footer__icon}/>
+            <img src={`${base}icons/logo-footer.svg`} alt="Логотип Окна Хаус" className={styles.footer__icon} />
             <p className={styles.footer__text}>© ООО “Окна Хаус”, 2011 - 2022</p>
           </div>
           <div className={styles.footer__data}>

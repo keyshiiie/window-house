@@ -2,12 +2,15 @@
 import React from 'react';
 import styles from './contacts.module.scss';
 import RequestForm from '../common/RequestForm/RequestForm.tsx';
-import type {RequestFormData} from '../common/RequestForm/types.ts';
+import type { RequestFormData } from '../common/RequestForm/types.ts';
 
 const Contacts: React.FC = () => {
   const handleSubmit = (data: RequestFormData) => {
     console.log('Данные формы:', data);
   };
+
+  // Хелпер для путей к картинкам
+  const base = import.meta.env.BASE_URL;
 
   return (
     <section className={styles.contacts} id='contacts'>
@@ -19,7 +22,7 @@ const Contacts: React.FC = () => {
             <p className={styles.contacts__subtitle}>Бесплатная консультация:</p>
             
             <div className={styles.contacts__phones}>
-              <img src="/public/icons/phone.svg" alt="Телефон" className={styles.contacts__icon} />
+              <img src={`${base}icons/phone.svg`} alt="Телефон" className={styles.contacts__icon} />
               <div className={styles.contacts__phoneItem}>
                 <a href="tel:84932343140" className={styles.contacts__phone}>8 (4932) 34 - 31 - 40</a>
               </div>
@@ -29,12 +32,12 @@ const Contacts: React.FC = () => {
             </div>
             
             <div className={styles.contacts__address}>
-              <img src="/public/icons/address.svg" alt="Адрес" className={styles.contacts__icon} />
+              <img src={`${base}icons/address.svg`} alt="Адрес" className={styles.contacts__icon} />
               <p className={styles.contacts__addressText}>г. Иваново, ул. Генерала Хлебникова, д.54, оф.303</p>
             </div>
             
             <div className={styles.contacts__email}>
-              <img src="/public/icons/email.svg" alt="Email" className={styles.contacts__icon} />
+              <img src={`${base}icons/email.svg`} alt="Email" className={styles.contacts__icon} />
               <a href="mailto:okna@haus.ru" className={styles.contacts__emailLink}>okna@haus.ru</a>
             </div>
             
@@ -47,16 +50,16 @@ const Contacts: React.FC = () => {
             
             <div className={styles.contacts__social}>
               <a href="#" className={styles.contacts__socialLink} aria-label="Социальная сеть">
-                <img src="/public/icons/social/01.svg" alt="" className={styles.contacts__socialIcon} />
+                <img src={`${base}icons/social/01.svg`} alt="" className={styles.contacts__socialIcon} />
               </a>
               <a href="#" className={styles.contacts__socialLink} aria-label="Социальная сеть">
-                <img src="/public/icons/social/02.svg" alt="" className={styles.contacts__socialIcon} />
+                <img src={`${base}icons/social/02.svg`} alt="" className={styles.contacts__socialIcon} />
               </a>
               <a href="#" className={styles.contacts__socialLink} aria-label="Социальная сеть">
-                <img src="/public/icons/social/03.svg" alt="" className={styles.contacts__socialIcon} />
+                <img src={`${base}icons/social/03.svg`} alt="" className={styles.contacts__socialIcon} />
               </a>
               <a href="#" className={styles.contacts__socialLink} aria-label="Социальная сеть">
-                <img src="/public/icons/social/04.svg" alt="" className={styles.contacts__socialIcon} />
+                <img src={`${base}icons/social/04.svg`} alt="" className={styles.contacts__socialIcon} />
               </a>
             </div>
           </div>

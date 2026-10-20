@@ -1,3 +1,4 @@
+// src/components/header/header.tsx
 import React from 'react';
 import BurgerMenu from './burgerMenu';
 import styles from './header.module.scss';
@@ -5,17 +6,15 @@ import { useActiveSection } from '../../hooks/useActiveSection';
 import ActionButton from '../../components/actionButton/ActionButton';
 
 const Header: React.FC = () => {
-  // Массив ID секций для отслеживания
   const sectionIds = ['services', 'products', 'companyinfo', 'portfolio', 'faq', 'contacts'];
   const activeSection = useActiveSection(sectionIds, 100);
+  const base = import.meta.env.BASE_URL;
 
   const handleApplicationClick = () => {
-    // Логика открытия модалки или скролла
     console.log('Открыть форму заявки на замер');
   };
 
   const handleCalculationClick = () => {
-    // Логика открытия модалки или скролла
     console.log('Открыть форму расчета');
   };
 
@@ -33,7 +32,6 @@ const Header: React.FC = () => {
       e.preventDefault();
       return;
     }
-    // Плавный скролл к секции
     const element = document.querySelector(href);
     if (element) {
       e.preventDefault();
@@ -46,7 +44,7 @@ const Header: React.FC = () => {
       <div className="container">
         <div className={styles['header__row']}>
           <div className={styles['header__logo']}>
-            <img src="/icons/logo.svg" alt="Логотип" />
+            <img src={`${base}icons/logo.svg`} alt="Логотип" />
           </div>
 
           <nav className={styles['header__nav']}>
