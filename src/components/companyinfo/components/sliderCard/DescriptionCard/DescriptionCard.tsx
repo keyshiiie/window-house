@@ -1,15 +1,18 @@
+// src/components/companyinfo/components/sliderCard/DescriptionCard/DescriptionCard.tsx
 import React from 'react';
 import styles from './DescriptionCard.module.scss';
 
 export const DescriptionCard: React.FC = () => {
+  const base = import.meta.env.BASE_URL;
+
   return (
     <div className={styles.descriptionCard}>
       <div className={styles.descriptionCard__content}>
         <div className={styles.descriptionCard__header}>
           <div className={styles.descriptionCard__image}>
             <img 
-              src={"/public/icons/logo.svg"} 
-              alt={"Информация о компании"} 
+              src={`${base}icons/logo.svg`} 
+              alt="Информация о компании" 
             />
           </div>
           <div className={styles.descriptionCard__text}>
@@ -27,10 +30,10 @@ export const DescriptionCard: React.FC = () => {
             muted 
             loop
             className={styles.videoPlayer}
-            poster="/public/images/video-bg.jpg"
+            poster={`${base}images/video-bg.jpg`}
           >
-            <source src="/videos/company-presentation.mp4" type="video/mp4" />
-            <source src="/videos/company-presentation.webm" type="video/webm" />
+            <source src={`${base}videos/company-presentation.mp4`} type="video/mp4" />
+            <source src={`${base}videos/company-presentation.webm`} type="video/webm" />
             Ваш браузер не поддерживает видео.
           </video>
         </div>
