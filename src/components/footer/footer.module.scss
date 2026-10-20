@@ -5,60 +5,48 @@
 
 .footer {
   background: $color-secondary;
-  padding: 50px 0;
+  // Паддинги fluid
+  padding: clamp(30px, 5vw, 50px) 0;
 
   &__content {
     @include flex(space-between, center);
     
     @media (max-width: $breakpoint-tablet) {
       flex-direction: column;
-      gap: $gap-lg;
-    }
-    
-    @media (max-width: $breakpoint-mobile) {
-      gap: $gap-md;
+      gap: clamp(20px, 4vw, 40px); // $gap-lg -> clamp
     }
   }
 
   &__logo {
     @include flex(space-between, center);
-    gap: $gap-sm;
+    gap: clamp(10px, 2vw, 20px); // $gap-sm -> clamp
     
     @media (max-width: $breakpoint-mobile) {
       flex-direction: column;
       text-align: center;
-      gap: $gap-xs;
+      gap: 10px;
     }
   }
 
   &__icon {
-    width: 55px;
-    
-    @media (max-width: $breakpoint-mobile) {
-      width: 45px;
-    }
+    // Размер иконки fluid
+    width: clamp(40px, 5vw, 55px);
   }
 
   &__text {
     @include font-style(regular, base);
     color: $color-white;
-    
-    @media (max-width: $breakpoint-tablet) {
-      font-size: 14px;
-    }
-    
-    @media (max-width: $breakpoint-mobile) {
-      font-size: 12px;
-    }
+    // Размер шрифта fluid (убрали @media)
+    font-size: clamp(12px, 1.2vw, 16px);
   }
 
   &__data {
     @include flex(space-between, center);
-    gap: $gap-sm;
+    gap: clamp(10px, 2vw, 20px);
     
     @media (max-width: $breakpoint-tablet) {
       flex-direction: column;
-      gap: $gap-xs;
+      gap: 10px;
       text-align: center;
     }
   }
@@ -68,36 +56,11 @@
     color: $color-white;
     text-decoration: none;
     transition: $transition-slow;
-    
-    @media (max-width: $breakpoint-tablet) {
-      font-size: 13px;
-    }
-    
-    @media (max-width: $breakpoint-mobile) {
-      font-size: 11px;
-    }
+    // Размер шрифта fluid (убрали @media)
+    font-size: clamp(11px, 1vw, 14px);
 
     &:hover {
       color: $color-primary;
-    }
-  }
-}
-
-// Дополнительные улучшения для очень маленьких экранов
-@media (max-width: 375px) {
-  .footer {
-    padding: 30px 0;
-    
-    &__icon {
-      width: 40px;
-    }
-    
-    &__text {
-      font-size: 11px;
-    }
-    
-    &__link {
-      font-size: 10px;
     }
   }
 }

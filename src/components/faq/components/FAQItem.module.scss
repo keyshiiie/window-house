@@ -12,20 +12,13 @@
 
   &__header {
     width: 100%;
-    padding: 20px 24px;
+    // Паддинги fluid: от 14px 16px до 20px 24px
+    padding: clamp(14px, 2vw, 20px) clamp(16px, 2.5vw, 24px);
     @include flex(space-between, center);
     background: $color-gray-500;
     border: none;
     cursor: pointer;
     transition: $transition-slow;
-    
-    @media (max-width: $breakpoint-tablet) {
-      padding: 16px 20px;
-    }
-    
-    @media (max-width: $breakpoint-mobile) {
-      padding: 14px 16px;
-    }
     
     &:hover {
       background: $color-white;
@@ -42,18 +35,11 @@
     text-align: left;
     transition: $transition-slow;
     flex: 1;
-    padding-right: 20px;
-    
-    @media (max-width: $breakpoint-tablet) {
-      font-size: 16px;
-      padding-right: 15px;
-    }
-    
-    @media (max-width: $breakpoint-mobile) {
-      font-size: 14px;
-      padding-right: 12px;
-      line-height: 1.4;
-    }
+    // Отступ справа fluid
+    padding-right: clamp(12px, 2vw, 20px);
+    // Размер шрифта fluid (убрали @media)
+    font-size: clamp(14px, 1.5vw, 18px);
+    line-height: 1.4;
   }
 
   &__arrow {
@@ -63,18 +49,9 @@
     color: $color-secondary;
     
     svg {
-      width: 24px;
-      height: 24px;
-      
-      @media (max-width: $breakpoint-tablet) {
-        width: 20px;
-        height: 20px;
-      }
-      
-      @media (max-width: $breakpoint-mobile) {
-        width: 18px;
-        height: 18px;
-      }
+      // Размер иконки fluid
+      width: clamp(18px, 2vw, 24px);
+      height: clamp(18px, 2vw, 24px);
     }
     
     &--open {
@@ -98,20 +75,11 @@
     p {
       @include font-style(regular, base);
       color: $color-black;
-      padding: 0 24px 24px 24px;
-      line-height: 1.6;
-      
-      @media (max-width: $breakpoint-tablet) {
-        font-size: 14px;
-        padding: 0 20px 20px 20px;
-        line-height: 1.5;
-      }
-      
-      @media (max-width: $breakpoint-mobile) {
-        font-size: 13px;
-        padding: 0 16px 16px 16px;
-        line-height: 1.5;
-      }
+      // Паддинги fluid
+      padding: 0 clamp(16px, 2.5vw, 24px) clamp(16px, 2.5vw, 24px) clamp(16px, 2.5vw, 24px);
+      line-height: 1.5;
+      // Размер шрифта fluid
+      font-size: clamp(13px, 1.2vw, 16px);
     }
   }
 }

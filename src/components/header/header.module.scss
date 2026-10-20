@@ -4,24 +4,26 @@
 @use '../../scss/abstracts/placeholders' as *;
 
 .header {
-    position: fixed; // меняем с relative на fixed
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; // увеличиваем z-index, чтобы был поверх всего
-    background: $color-white; // добавляем фон
-    box-shadow: $shadow-sm; // добавляем легкую тень для визуального разделения
+    z-index: 1000;
+    background: $color-white;
+    box-shadow: $shadow-sm;
     
     &__row {
         background: $color-white;
         @include flex(space-between, center);
         column-gap: $gap-md;
-        padding: 17px 0;
+        // Паддинги fluid: от 12px до 17px
+        padding: clamp(12px, 1.5vw, 17px) 0;
     }
 
     &__logo {
         img {
-            height: 40px;
+            // Высота логотипа fluid
+            height: clamp(32px, 4vw, 40px);
         }
     }
 
@@ -29,7 +31,7 @@
         flex: 1;
         
         @media (max-width: $breakpoint-wide) {
-            display: none;
+            display: none; // Скрываем на планшетах и мобилках
         }
     }
 
@@ -53,7 +55,7 @@
         &--active {
             color: $color-primary;
             border-top: 4px solid $color-primary;
-            padding-top: 25px;
+            padding-top: 25px; // Оставляем, так как это привязка к высоте шапки
         }
     }
 
@@ -62,7 +64,7 @@
         column-gap: $gap-xxs;
         
         @media (max-width: $breakpoint-tablet) {
-            display: none;
+            display: none; // Скрываем кнопки на мобилках
         }
     }
 
@@ -153,7 +155,8 @@
     height: 100vh;
     background: $color-white;
     z-index: 100;
-    padding: 80px 30px 30px;
+    // Паддинги fluid
+    padding: clamp(60px, 10vw, 80px) clamp(20px, 4vw, 30px) clamp(20px, 4vw, 30px);
     transition: right 0.3s ease;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
     
@@ -165,15 +168,16 @@
 .mobileNavList {
     list-style: none;
     padding: 0;
-    margin: 0 0 30px;
+    margin: 0 0 clamp(20px, 4vw, 30px);
     
     li {
-        margin-bottom: 20px;
+        margin-bottom: clamp(15px, 2.5vw, 20px);
         
         a {
             text-decoration: none;
             color: $color-black;
-            font-size: 18px;
+            // Размер шрифта fluid
+            font-size: clamp(16px, 2vw, 18px);
             font-weight: 500;
             transition: $transition-slow;
             

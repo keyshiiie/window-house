@@ -1,16 +1,23 @@
-// src/components/services/serviceDetail.module.scss
 @use '../../scss/abstracts/variables' as *;
 @use '../../scss/abstracts/mixins' as *;
 @use '../../scss/abstracts/placeholders' as *;
 
 .serviceDetailModal{
-  padding: 50px 100px;
+  // Паддинги fluid: от 20px 15px до 50px 100px
+  padding: clamp(20px, 5vw, 50px) clamp(15px, 8vw, 100px);
   background-color: $color-white;
 
   &__top{
     @include flex(space-between, center);
     column-gap: $gap-xxl;
     margin-bottom: $gap-base;
+
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $gap-base;
+      margin-bottom: 0;
+    }
   }
 
   &__header{
@@ -22,6 +29,8 @@
   &__title{
     @include font-style(bold, xl);
     color: $color-secondary;
+    // Размер шрифта fluid
+    font-size: clamp(20px, 2.5vw, 24px);
   }
   
   &__description{
@@ -33,11 +42,18 @@
   &__buttons{
     display: flex;
     column-gap: $gap-xxs;
+
+    @media (max-width: $breakpoint-mobile) {
+      display: grid;
+      gap: $gap-xs;
+      width: 100%;
+      justify-content: center;
+    }
   }
 
-  // Секция с дополнительными возможностями
   &__features {
-    margin-top: $gap-xl;
+    // Отступ fluid
+    margin-top: clamp(30px, 5vw, 60px);
   }
 
   &__featuresTitle {
@@ -50,20 +66,24 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: $gap-base;
+
+    @media (max-width: $breakpoint-tablet) {
+      grid-template-columns: 1fr;
+      gap: $gap-sm;
+    }
   }
 
-  // Карточка - фиксированная структура
   &__featureCard{
     display: flex;
     align-items: center;
     gap: $gap-xxs;
-    min-height: 90px;
+    min-height: clamp(70px, 8vw, 90px);
   }
 
-  // Контейнер для иконки - фиксированный размер
   &__featureIcon{
-    width: 70px;
-    height: 70px;
+    // Размер иконки fluid
+    width: clamp(50px, 6vw, 70px);
+    height: clamp(50px, 6vw, 70px);
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -76,7 +96,6 @@
     }
   }
 
-  // Контейнер для текста - занимает оставшееся пространство
   &__featureContent {
     flex: 1;
     min-width: 0;
@@ -87,12 +106,16 @@
     color: $color-secondary;
     margin-bottom: $gap-xss;
     line-height: $line-height-normal;
+    // Размер шрифта fluid
+    font-size: clamp(13px, 1.2vw, 14px);
   }
 
   &__featureDescription{
     @include font-style(regular, sm);
     color: $color-black;
     line-height: $line-height-normal;
+    // Размер шрифта fluid
+    font-size: clamp(12px, 1vw, 14px);
   }
 }
 
@@ -100,6 +123,14 @@
 .slider {
   margin: 0;
   position: relative;
+
+  @media (max-width: $breakpoint-tablet) {
+    margin: 30px 0 0;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    margin: 20px 0 0;
+  }
   
   &__main {
     position: relative;
@@ -123,21 +154,22 @@
     display: block;
   }
   
-  // Кнопки навигации (стрелки)
   &__prev,
   &__next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
+    // Размер кнопок fluid
+    width: clamp(28px, 3.5vw, 40px);
+    height: clamp(28px, 3.5vw, 40px);
     background: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
     border-radius: 50%;
     cursor: pointer;
     transition: $transition-slow;
-    font-size: 24px;
+    // Размер шрифта (стрелки) fluid
+    font-size: clamp(16px, 2vw, 24px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -150,25 +182,22 @@
     }
     
     @media (max-width: $breakpoint-tablet) {
-      width: 32px;
-      height: 32px;
-      font-size: 18px;
       opacity: 0.7;
     }
   }
   
   &__prev {
-    left: 20px;
+    left: clamp(10px, 2vw, 20px);
   }
   
   &__next {
-    right: 20px;
+    right: clamp(10px, 2vw, 20px);
   }
   
-  // Кружочки (точки) - поверх слайдера
   &__dots {
     position: absolute;
-    bottom: 20px;
+    // Отступ снизу fluid
+    bottom: clamp(10px, 2vw, 20px);
     left: 0;
     right: 0;
     display: flex;
@@ -180,8 +209,9 @@
   }
   
   &__dot {
-    width: 10px;
-    height: 10px;
+    // Размер точек fluid
+    width: clamp(8px, 1vw, 10px);
+    height: clamp(8px, 1vw, 10px);
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.6);
     border: none;
@@ -196,132 +226,9 @@
     
     &Active {
       background: $color-primary;
-      width: 12px;
-      height: 12px;
-    }
-  }
-}
-
-
-// Адаптив для планшетов
-@media (max-width: $breakpoint-tablet) {
-  .serviceDetailModal {
-    padding: 30px 20px;
-    
-    &__top {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: $gap-base;
-      width: 100%;
-      margin-bottom: 0;
-    }
-    
-    &__buttons {
-      display: flex;
-      gap: $gap-xs;
-      width: 100%;
-      
-      button {
-        flex: 0 1 auto; 
-        min-width: 120px;
-      }
-    }
-
-    &__features {
-      margin-top: 30px;
-    }
-    
-    &__featuresGrid {
-      grid-template-columns: 1fr;
-      gap: $gap-sm;
-    }
-    
-    &__featureCard {
-      min-height: auto;
-    }
-    
-    &__featureIcon {
-      width: 60px;
-      height: 60px;
-    }
-  }
-  
-  // Адаптив слайдера для планшетов
-  .slider {
-    margin: 30px 0 0;
-    width: calc(100% + 0px); // Растягиваем на всю ширину модалки (компенсируем паддинги)
-  }
-}
-
-// Адаптив для мобильных
-@media (max-width: $breakpoint-mobile) {
-  .serviceDetailModal {
-    padding: 20px 15px;
-    
-    &__featureIcon {
-      width: 50px;
-      height: 50px;
-    }
-    
-    &__featureTitle {
-      font-size: $font-size-xs;
-    }
-    
-    &__featureDescription {
-      font-size: $font-size-xs;
-    }
-
-    &__buttons {
-      display: grid;
-      gap: $gap-xs;
-      width: 100%;
-      justify-content: center; // Центрируем сетку по горизонтали
-      
-      button {
-        flex: 0 1 auto; 
-        min-width: 120px;
-        
-        // Центрируем содержимое внутри кнопки
-        @include flex(center,center);
-        text-align: center;
-        
-      }
-    }
-
-  }
-  
-  // Адаптив слайдера для мобилок - растягиваем и уменьшаем отступ снизу
-  .slider {
-    width: 100%; // Компенсируем паддинги 15px с каждой стороны
-    margin: 20px 0 0;
-    
-    &__dots {
-      bottom: 10px; // Уменьшаем отступ точек от низа
-    }
-    
-    &__prev,
-    &__next {
-      width: 28px;
-      height: 28px;
-      font-size: 16px;
-    }
-    
-    &__prev {
-      left: 10px;
-    }
-    
-    &__next {
-      right: 10px;
-    }
-    
-    &__dot {
-      width: 8px;
-      height: 8px;
-      
-      &Active {
-        width: 10px;
-        height: 10px;
-      }
+      // Активная точка fluid
+      width: clamp(10px, 1.2vw, 12px);
+      height: clamp(10px, 1.2vw, 12px);
     }
   }
 }

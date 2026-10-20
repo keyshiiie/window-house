@@ -4,8 +4,10 @@
 @use '../../scss/abstracts/placeholders' as *;
 
 .main {
-  padding: 60px 0;
-  margin-top: 70px;
+  // Отступы fluid
+  padding: clamp(40px, 6vw, 60px) 0;
+  // Отступ сверху (из-за фиксированной шапки) fluid
+  margin-top: clamp(60px, 8vw, 70px);
   position: relative;
 
   &::before {
@@ -23,21 +25,14 @@
   }
 
   &__row {
-    padding: 0 60px;
+    // Боковые отступы fluid: от 0 до 60px
+    padding: 0 clamp(0px, 5vw, 60px);
     @include flex(space-between, center);
-    gap: 40px;
+    gap: clamp(20px, 4vw, 40px);
     
-    // Планшеты
-    @media (max-width: $breakpoint-tablet) {
-      padding: 0 30px;
-      gap: 30px;
-    }
-    
-    // Мобилки
     @media (max-width: $breakpoint-mobile) {
-      flex-direction: column;
+      flex-direction: column; // Смена структуры на мобилке
       padding: 0;
-      gap: 40px;
     }
   }
 
@@ -53,24 +48,23 @@
   &__subtitle {
     @include font-style(bold, xl);
     color: $color-primary;
-    
-    @media (max-width: $breakpoint-mobile) {
-      font-size: 18px;
-    }
+    // Размер fluid
+    font-size: clamp(16px, 2vw, 24px);
   }
 
   &__title {
     @include font-style(regular, xxxl);
     color: $color-white;
-    max-width: 520px;
+    // Максимальная ширина fluid
+    max-width: clamp(280px, 40vw, 520px);
+    // Размер fluid (убрали медиа-запросы)
+    font-size: clamp(28px, 4vw, 40px);
     
     @media (max-width: $breakpoint-tablet) {
       max-width: 100%;
-      font-size: 32px;
     }
     
     @media (max-width: $breakpoint-mobile) {
-      font-size: 28px;
       padding: 0 10px;
       margin-bottom: 30px;
     }
@@ -79,27 +73,20 @@
 
 // Блок преимуществ
 .quality {
-  margin-top: $gap-sm;
-  
-  @media (max-width: $breakpoint-mobile) {
-    margin-top: 20px;
-  }
+  // Отступ fluid
+  margin-top: clamp(15px, 2vw, 20px);
 
   &__grid {
     @include flex(space-between, center);
-    gap: $gap-base;
+    gap: clamp(15px, 3vw, 30px);
     
-    // Планшеты
     @media (max-width: $breakpoint-tablet) {
-      gap: 20px;
       flex-wrap: wrap;
       justify-content: center;
     }
     
-    // Мобилки - одна колонка
     @media (max-width: $breakpoint-mobile) {
       flex-direction: column;
-      gap: 30px;
       align-items: center;
     }
   }
@@ -107,12 +94,9 @@
 
 // Карточка преимущества
 .qualityCard {
-  max-width: 170px;
+  // Ширина fluid
+  max-width: clamp(150px, 20vw, 170px);
   @include flex(space-between, start, column);
-  
-  @media (max-width: $breakpoint-tablet) {
-    max-width: 150px;
-  }
   
   @media (max-width: $breakpoint-mobile) {
     max-width: 100%;
@@ -122,13 +106,9 @@
 
   &__icon {
     width: auto;
-    height: 100px; // было 80px - увеличили
-    margin-bottom: $gap-sm;
-    
-    @media (max-width: $breakpoint-mobile) {
-      height: 80px; // было 60px - увеличили
-      margin-bottom: 15px;
-    }
+    // Высота иконки fluid
+    height: clamp(80px, 10vw, 100px);
+    margin-bottom: clamp(15px, 2vw, 20px); // $gap-sm -> clamp
 
     img {
       width: 100%;
@@ -140,14 +120,8 @@
   &__description {
     color: $color-white;
     @include font-style(regular, sm);
-    
-    @media (max-width: $breakpoint-tablet) {
-      font-size: $font-size-xs;
-    }
-    
-    @media (max-width: $breakpoint-mobile) {
-      font-size: 14px;
-    }
+    // Размер шрифта fluid (убрали @media)
+    font-size: clamp(12px, 1.2vw, 14px);
   }
 }
 

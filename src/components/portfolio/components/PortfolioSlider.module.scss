@@ -1,11 +1,10 @@
-// src/components/portfolio/components/PortfolioSlider.module.scss
 @use '../../../scss/abstracts/variables' as *;
 @use '../../../scss/abstracts/mixins' as *;
 @use '../../../scss/abstracts/placeholders' as *;
 
 .portfolio-slider {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: clamp(15px, 2vw, 20px);
 
   &__container {
     position: relative;
@@ -33,8 +32,9 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
+    // Размер стрелки fluid
+    width: clamp(36px, 4vw, 48px);
+    height: clamp(36px, 4vw, 48px);
     border-radius: 50%;
     background: none;
     cursor: pointer;
@@ -46,14 +46,18 @@
 
     svg {
       transition: all 0.3s ease;
+      // Размер SVG fluid
+      width: clamp(16px, 1.8vw, 20px);
+      height: clamp(16px, 1.8vw, 20px);
     }
 
     &--prev {
-      left: -70px;
+      // Отступ стрелок fluid
+      left: clamp(-20px, -5vw, -70px);
     }
 
     &--next {
-      right: -70px;
+      right: clamp(-20px, -5vw, -70px);
     }
 
     &:disabled {
@@ -62,15 +66,6 @@
       
       svg {
         opacity: 0.5;
-      }
-
-      &:hover:not(:disabled) {
-        transform: translateY(-50%) scale(1.05);
-        
-        // Меняем цвет иконки при наведении
-        svg path {
-          stroke: $color-secondary !important;
-        }
       }
     }
 
@@ -104,7 +99,7 @@
   .image-wrapper {
     position: relative;
     width: 100%;
-    padding-bottom: 100%; // Соотношение 4:3
+    padding-bottom: 100%;
     overflow: hidden;
     cursor: pointer;
   }
@@ -126,7 +121,8 @@
     right: 0;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     color: $color-white;
-    padding: 15px;
+    // Паддинги fluid
+    padding: clamp(10px, 2vw, 15px);
     transform: translateY(100%);
     transition: transform 0.3s ease;
   }
@@ -144,31 +140,27 @@
   .image-title {
     @include font-style(bold, md);
     margin-bottom: 5px;
-    font-size: 16px;
-    
-    @media (max-width: 768px) {
-      font-size: 14px;
-    }
+    // Размер шрифта fluid
+    font-size: clamp(14px, 1.5vw, 16px);
   }
 
   .image-location {
     @include font-style(regular, sm);
     opacity: 0.9;
-    font-size: 12px;
-    
-    @media (max-width: 768px) {
-      font-size: 10px;
-    }
+    // Размер шрифта fluid
+    font-size: clamp(10px, 1vw, 12px);
   }
 
   &__dots {
     @include flex(center, center);
     gap: $gap-xs;
-    margin-top: 20px;
+    // Отступ fluid
+    margin-top: clamp(15px, 2vw, 20px);
 
     .dot {
-      width: 10px;
-      height: 10px;
+      // Размер точки fluid
+      width: clamp(8px, 1vw, 10px);
+      height: clamp(8px, 1vw, 10px);
       border-radius: 50%;
       background: $color-gray-100;
       border: none;
@@ -181,7 +173,8 @@
       }
 
       &--active {
-        width: 30px;
+        // Активная точка fluid
+        width: clamp(24px, 3vw, 30px);
         border-radius: 5px;
         background: $color-secondary;
       }
@@ -189,8 +182,8 @@
   }
 }
 
-// Адаптивность для стрелок
-@media (max-width: $breakpoint-wide) {
+// Оставляем медиа-запрос только для корректировки стрелок на очень узких экранах
+@media (max-width: $breakpoint-tablet) {
   .portfolio-slider {
     &__arrow {
       &--prev {
@@ -198,34 +191,6 @@
       }
       &--next {
         right: 0;
-      }
-    }
-  }
-}
-
-@media (max-width: $breakpoint-tablet) {
-  .portfolio-slider {
-    &__arrow {
-      width: 36px;
-      height: 36px;
-      top: 40%;
-      
-      svg {
-        width: 16px;
-        height: 30px;
-      }
-    }
-    
-    &__dots {
-      margin-top: 30px;
-      
-      .dot {
-        width: 8px;
-        height: 8px;
-        
-        &--active {
-          width: 24px;
-        }
       }
     }
   }

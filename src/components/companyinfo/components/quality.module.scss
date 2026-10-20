@@ -4,49 +4,33 @@
 @use '../../../scss/abstracts/placeholders' as *;
 
 .quality {
-  padding: 60px 0;
-  
-  @media (max-width: $breakpoint-tablet) {
-    padding: 40px 0;
-  }
-  
-  @media (max-width: $breakpoint-mobile) {
-    padding: 0;
-  }
+  // Отступы секции плавно меняются от 0 до 60px
+  padding: clamp(0px, 5vw, 60px) 0;
 
   &__logo {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    max-width: 100%; // Логотип не вылезает за пределы
+    // Логотип плавно уменьшается от 100% ширины до 80% на планшетах, но не превышает 100%
+    width: clamp(80%, 90vw, 100%);
     height: auto;
-    
-    @media (max-width: $breakpoint-tablet) {
-      max-width: 80%;
-    }
-    
-    @media (max-width: $breakpoint-mobile) {
-      max-width: 100%;
-    }
   }
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
-    gap: $gap-xxl $gap-base;
+    gap: clamp(20px, 4vw, 90px) clamp(15px, 2vw, 30px); // $gap-xxl $gap-base
     align-items: start;
     
     // Планшеты
     @media (max-width: $breakpoint-tablet) {
       grid-template-columns: repeat(2, 1fr);
-      gap: $gap-xl $gap-base;
     }
     
     // Мобилки - одна колонка
     @media (max-width: $breakpoint-mobile) {
       grid-template-columns: 1fr;
-      gap: $gap-base;
-      padding: 0 20px;
+      padding: 0 clamp(10px, 3vw, 20px);
     }
   }
 }
@@ -63,26 +47,17 @@
     text-align: center;
     gap: $gap-sm;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    padding-bottom: 30px;
+    padding-bottom: clamp(20px, 3vw, 30px);
   }
   
   &__icon {
-    width: 100px;
-    height: 80px;
+    // Размер иконки плавно меняется от 60px до 100px
+    width: clamp(60px, 8vw, 100px);
+    height: clamp(50px, 6vw, 80px);
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    @media (max-width: $breakpoint-tablet) {
-      width: 80px;
-      height: 70px;
-    }
-    
-    @media (max-width: $breakpoint-mobile) {
-      width: 70px;
-      height: 60px;
-    }
     
     img {
       width: 100%;
@@ -108,13 +83,8 @@
     margin: 0;
     line-height: 1.2;
     
-    @media (max-width: $breakpoint-tablet) {
-      font-size: $font-size-sm;
-    }
-    
-    @media (max-width: $breakpoint-mobile) {
-      font-size: $font-size-base;
-    }
+    // Шрифт плавно меняется, убираем @media
+    font-size: clamp(14px, 1.2vw, 16px); 
   }
 
   &__description {
@@ -123,12 +93,7 @@
     margin: 0;
     line-height: 1.4;
     
-    @media (max-width: $breakpoint-tablet) {
-      font-size: $font-size-sm;
-    }
-    
-    @media (max-width: $breakpoint-mobile) {
-      font-size: $font-size-sm;
-    }
+    // Шрифт плавно меняется, убираем @media
+    font-size: clamp(12px, 1vw, 14px); 
   }
 }

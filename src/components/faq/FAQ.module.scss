@@ -4,47 +4,30 @@
 @use '../../scss/abstracts/placeholders' as *;
 
 .faq {
-  padding: 60px 0;
+  // Отступы секции fluid
+  padding: clamp(40px, 6vw, 60px) 0;
   background: $color-gray-200;
 
   &__content {
     max-width: 1200px;
-    padding: 40px 100px 60px;
+    // Паддинги fluid: верх/низ и бока сжимаются на мобилках
+    padding: clamp(20px, 5vw, 60px) clamp(20px, 8vw, 100px) clamp(30px, 6vw, 60px);
     margin: 0 auto;
     border-radius: $border-radius-sm;
     background: $color-primary;
-    
-    @media (max-width: $breakpoint-tablet) {
-      padding: 30px 40px 40px;
-    }
-    
-    @media (max-width: $breakpoint-mobile) {
-      padding: 20px 20px 30px;
-    }
   }
 
   &__title {
     @extend %section-title;
     color: $color-white;
-    
-    @media (max-width: $breakpoint-tablet) {
-      font-size: 32px;
-      margin-bottom: 30px;
-    }
-    
-    @media (max-width: $breakpoint-mobile) {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
+    // Убрали @media, размер fluid из %section-title
+    font-size: clamp(28px, 4vw, 40px);
+    margin-bottom: clamp(20px, 3vw, 45px);
   }
 
   &__list {
     display: flex;
     flex-direction: column;
-    gap: $gap-xxs;
-    
-    @media (max-width: $breakpoint-mobile) {
-      gap: $gap-xs;
-    }
+    gap: clamp(10px, 1.5vw, 15px);
   }
 }

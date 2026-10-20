@@ -1,11 +1,11 @@
-// src/components/products/components/ProductSlider.module.scss
 @use '../../../scss/abstracts/variables' as *;
 @use '../../../scss/abstracts/mixins' as *;
 @use '../../../scss/abstracts/placeholders' as *;
 
 .product-slider {
   position: relative;
-  margin: 30px 0 60px;
+  // Отступы fluid
+  margin: clamp(20px, 3vw, 30px) 0 clamp(40px, 6vw, 60px);
 
   &__container {
     position: relative;
@@ -17,8 +17,9 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
+    // Размер стрелки fluid
+    width: clamp(36px, 4vw, 48px);
+    height: clamp(36px, 4vw, 48px);
     border-radius: 50%;
     background: none;
     cursor: pointer;
@@ -30,14 +31,16 @@
 
     svg {
       transition: all 0.3s ease;
+      width: clamp(16px, 1.8vw, 20px);
+      height: clamp(16px, 1.8vw, 20px);
     }
 
     &--prev {
-      left: -70px;
+      left: clamp(-20px, -5vw, -70px);
     }
 
     &--next {
-      right: -70px;
+      right: clamp(-20px, -5vw, -70px);
     }
 
     &:disabled {
@@ -46,14 +49,6 @@
       
       svg {
         opacity: 0.5;
-      }
-
-      &:hover:not(:disabled) {
-        transform: translateY(-50%) scale(1.05);
-        
-        svg path {
-          stroke: $color-secondary !important;
-        }
       }
     }
 
@@ -81,13 +76,11 @@
   width: 100%;
   transition: transform 0.3s ease;
 
-  @media (max-width: 768px) {
+  @media (max-width: $breakpoint-tablet) {
     flex-direction: column;
-    gap: $gap-sm;
   }
 
   &__image {
-
     img {
       width: 100%;
       height: auto;
@@ -97,24 +90,29 @@
 
   &__content {
     flex: 1;
-    padding-right: 30px;
+    // Паддинг fluid
+    padding-right: clamp(0px, 3vw, 30px);
     display: grid;
     gap: $gap-md;
 
-    @media (max-width: 768px) {
-      padding: 0 20px 30px 20px;
+    @media (max-width: $breakpoint-tablet) {
+      padding: 0 clamp(15px, 3vw, 20px) clamp(20px, 3vw, 30px) clamp(15px, 3vw, 20px);
     }
   }
 
   &__title {
     @include font-style(bold, xxxl);
     color: $color-primary;
+    // Размер шрифта fluid
+    font-size: clamp(24px, 3.5vw, 40px);
   }
 
   &__description {
     @include font-style(light, base);
     color: $color-black;
-    max-width: 390px;
+    max-width: clamp(280px, 30vw, 390px);
+    // Размер шрифта fluid
+    font-size: clamp(14px, 1.5vw, 16px);
   }
 
   &__characteristics {
@@ -133,6 +131,8 @@
     @include font-style(regular, md);
     color: $color-black;
     white-space: nowrap;
+    // Размер шрифта fluid
+    font-size: clamp(13px, 1.3vw, 18px);
   }
 
   &__dots {
@@ -146,21 +146,22 @@
     @include font-style(bold, md);
     color: $color-secondary;
     white-space: nowrap;
+    // Размер шрифта fluid
+    font-size: clamp(13px, 1.3vw, 18px);
   }
 }
 
-// Адаптивность для планшетов и десктопов
+// Оставляем медиа-запросы для позиционирования стрелок и их скрытия на мобилках
 @media (max-width: $breakpoint-large) {
   .product-slider {
     &__container {
-      padding: 0 40px; // Добавляем отступы для стрелок внутри контейнера
+      padding: 0 clamp(20px, 4vw, 40px);
     }
     
     &__arrow {
       &--prev {
-        left: -20px; // Стрелки ближе к краю
+        left: -20px;
       }
-
       &--next {
         right: -20px;
       }
@@ -168,38 +169,14 @@
   }
 }
 
-// Адаптивность для мобилок
 @media (max-width: $breakpoint-mobile) {
   .product-slider {
-    margin: 20px 0; // Уменьшаем отступы
-    
     &__container {
-      padding: 0; // Убираем отступы полностью
+      padding: 0;
     }
     
     &__arrow {
-      display: none; // Скрываем стрелки на мобилках
-    }
-  }
-  
-  .product-card {
-    &__content {
-      padding: 0 15px 20px 15px; // Уменьшаем боковые отступы
-    }
-    
-    &__title {
-      font-size: 24px; // Уменьшаем заголовок
-    }
-    
-    &__description {
-      font-size: 14px; // Уменьшаем описание
-    }
-  }
-  
-  .characteristic {
-    &__name,
-    &__value {
-      font-size: 13px; // Уменьшаем шрифт характеристик
+      display: none;
     }
   }
 }

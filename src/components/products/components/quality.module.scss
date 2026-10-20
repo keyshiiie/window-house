@@ -1,21 +1,20 @@
-// src/components/products/components/quality.module.scss
 @use '../../../scss/abstracts/variables' as *;
 @use '../../../scss/abstracts/mixins' as *;
 @use '../../../scss/abstracts/placeholders' as *;
 
 .quality {
-  padding: 30px 0px 60px;
+  // Отступы fluid
+  padding: clamp(20px, 3vw, 30px) 0 clamp(40px, 6vw, 60px);
   position: relative;
   z-index: 0;
 
-  // Фоновое изображение
   &::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100%);
+    height: 100%;
     background-image: url('/public/images/quality-bg.jpg');
     background-size: cover;
     background-position: center;
@@ -27,27 +26,27 @@
     display: block;
     margin-left: auto;
     margin-right: auto; 
+    // Логотип fluid
+    width: clamp(200px, 30vw, 400px);
+    height: auto;
   }
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr); 
     gap: $gap-base;
-    margin-top: 50px;
+    // Отступ сверху fluid
+    margin-top: clamp(30px, 5vw, 50px);
     
-    // Планшеты
     @media (max-width: $breakpoint-tablet) {
       grid-template-columns: repeat(3, 1fr);
       gap: $gap-md;
-      margin-top: 40px;
     }
     
-    // Мобилки - одна колонка
     @media (max-width: $breakpoint-mobile) {
       grid-template-columns: 1fr;
-      gap: 30px; // Явный отступ в 30px между карточками
-      margin-top: 30px;
-      padding: 0 20px;
+      gap: clamp(20px, 4vw, 30px);
+      padding: 0 clamp(10px, 3vw, 20px);
     }
   }
 }
@@ -58,29 +57,14 @@
   grid-template-rows: auto 1fr; 
   text-align: center;
   
-  @media (max-width: $breakpoint-mobile) {
-    max-width: 100%;
-    justify-items: center;
-    // Добавляем нижний отступ как запасной вариант
-    margin-bottom: 0; // Сбрасываем возможные margin
-  }
-  
   &__icon {
     width: auto;
-    height: 70px;
-    margin: 0 auto 15px auto;  
+    // Высота иконки fluid
+    height: clamp(60px, 7vw, 70px);
+    margin: 0 auto clamp(10px, 1.5vw, 15px) auto;  
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    @media (max-width: $breakpoint-tablet) {
-      height: 60px;
-    }
-    
-    @media (max-width: $breakpoint-mobile) {
-      height: 70px;
-      margin-bottom: 10px;
-    }
     
     img {
       width: 100%;
@@ -94,22 +78,19 @@
     color: $color-white;
     margin: 0;
     align-self: start;
-    
-    @media (max-width: $breakpoint-tablet) {
-      font-size: $font-size-sm;
-    }
+    // Размер шрифта fluid
+    font-size: clamp(14px, 1.5vw, 16px);
     
     @media (max-width: $breakpoint-mobile) {
-      font-size: $font-size-base;
       max-width: 280px;
     }
   }
 }
 
-// Дополнительно: если нужно добавить разделители между карточками на мобилках
+// Оставляем медиа-запрос для разделителей между карточками на мобилках
 @media (max-width: $breakpoint-mobile) {
   .qualityCard:not(:last-child) {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding-bottom: 30px;
+    padding-bottom: clamp(20px, 4vw, 30px);
   }
 }

@@ -5,7 +5,8 @@
 
 .companyinfo-slider {
   position: relative;
-  margin: 30px 0 70px;
+  // Отступы плавно уменьшаются на мобилках
+  margin: clamp(30px, 5vw, 70px) 0; 
 
   &__container {
     position: relative;
@@ -16,11 +17,4 @@
 
 .companyinfo-card {
   background: $color-white;
-}
-
-@media (max-width: $breakpoint-mobile) {
-  .companyinfo-slider {
-    position: relative;
-    margin: 30px 0;
-  }
 }
