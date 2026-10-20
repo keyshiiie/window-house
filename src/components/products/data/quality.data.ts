@@ -1,5 +1,5 @@
-// data/quality.data.ts
-import type { Quality } from '../types/quality.types.ts';
+// src/components/products/data/quality.data.ts
+import type { Quality } from '../../../types/quality.types';
 
 export const qualityData: Quality[] = [
     {

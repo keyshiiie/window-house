@@ -1,7 +1,7 @@
 // src/components/portfolio/components/PortfolioSlider.tsx
 import React, { useState, useEffect } from 'react';
 import { PrevArrowIcon, NextArrowIcon } from '../../ui/ArrowIcons';
-import type { PortfolioImage, PortfolioSliderProps } from '../types/portfolio.types';
+import type { PortfolioSliderProps } from '../types/portfolio.types';
 import { portfolioImages as defaultImages } from '../data/portfolio.data';
 import styles from './PortfolioSlider.module.scss';
 
@@ -16,7 +16,6 @@ const PortfolioSlider: React.FC<PortfolioSliderProps> = ({
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   
-  // Определяем ширину экрана
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -28,11 +27,9 @@ const PortfolioSlider: React.FC<PortfolioSliderProps> = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   
-  // На мобилках: 1 картинка, на планшетах/десктопе: 4 картинки
   const imagesPerPage = isMobile ? 1 : 4;
   const totalPages = Math.ceil(images.length / imagesPerPage);
 
-  // Эффект для автовоспроизведения (опционально)
   React.useEffect(() => {
     if (autoPlay && !isHovered && totalPages > 1) {
       const interval = setInterval(() => {
@@ -63,7 +60,6 @@ const PortfolioSlider: React.FC<PortfolioSliderProps> = ({
     setCurrentIndex(page);
   };
 
-  // Обработчики свайпов
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
   };
@@ -90,7 +86,6 @@ const PortfolioSlider: React.FC<PortfolioSliderProps> = ({
     setTouchEnd(0);
   };
 
-  // Получаем текущие изображения для отображения
   const getCurrentImages = () => {
     if (isMobile) {
       return [images[currentIndex]];
@@ -102,7 +97,6 @@ const PortfolioSlider: React.FC<PortfolioSliderProps> = ({
   };
 
   const currentImages = getCurrentImages();
-  const totalItems = isMobile ? images.length : totalPages;
 
   if (!images.length) {
     return <div>Нет изображений</div>;
@@ -165,7 +159,6 @@ const PortfolioSlider: React.FC<PortfolioSliderProps> = ({
         )}
       </div>
       
-      {/* Доты для мобилок */}
       {isMobile && images.length > 1 && (
         <div className={styles['portfolio-slider__dots']}>
           {images.map((_, index) => (
@@ -179,7 +172,6 @@ const PortfolioSlider: React.FC<PortfolioSliderProps> = ({
         </div>
       )}
       
-      {/* Доты для десктопа */}
       {!isMobile && totalPages > 1 && (
         <div className={styles['portfolio-slider__dots']}>
           {Array.from({ length: totalPages }).map((_, index) => (

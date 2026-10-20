@@ -1,5 +1,5 @@
-// src/components/products/components/CompanyinfoSlider.tsx
-import React, { useState } from 'react';
+// src/components/companyinfo/components/companyinfoSlider.tsx
+import React from 'react';
 import type { CompanyinfoTypes } from '../types/companyinfo.types';
 import { DescriptionCard } from './sliderCard/DescriptionCard/DescriptionCard';
 import { HowWeWorkCard } from './sliderCard/HowWeWorkCard/HowWeWorkCard';
@@ -9,25 +9,21 @@ import styles from './companyinfoSlider.module.scss';
 
 interface CompanyinfoSliderProps {
   activeType?: CompanyinfoTypes;
-  onTypeChange?: (type: CompanyinfoTypes) => void;
 }
 
-const CompanyinfoSlider: React.FC<CompanyinfoSliderProps> = ({ activeType: externalActiveType, onTypeChange }) => {
-  const [internalActiveType, setInternalActiveType] = useState<CompanyinfoTypes>('Описание');
-  // Используем внешний activeType если он передан, иначе внутренний
-  const activeType = externalActiveType || internalActiveType;
+const CompanyinfoSlider: React.FC<CompanyinfoSliderProps> = ({ activeType: externalActiveType }) => {
+  const activeType = externalActiveType || 'Описание';
   
-  // Рендерим нужный компонент в зависимости от типа
   const renderContent = () => {
     switch (activeType) {
       case 'Описание':
         return <DescriptionCard />;
       case 'Как мы работаем':
-        return <HowWeWorkCard/>;
+        return <HowWeWorkCard />;
       case 'Отзывы':
-        return <ReviewCard/>;
+        return <ReviewCard />;
       case 'Сертификаты':
-        return <CertificateCard/>;
+        return <CertificateCard />;
       default:
         return <div>Нет информации</div>;
     }

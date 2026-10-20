@@ -14,9 +14,8 @@ const Companyinfo: React.FC = () => {
   };
 
   const handleApplicationClick = () => {
-        // Логика открытия модалки или скролла
-        console.log('Открыть форму заявки на замер');
-    };
+    console.log('Открыть форму заявки на замер');
+  };
 
   const getTypeClassName = (type: CompanyinfoTypes): string => {
     const baseClass = styles['companyinfo__type'];
@@ -57,12 +56,10 @@ const Companyinfo: React.FC = () => {
           </div>
         </div>
         
-        <CompanyinfoSlider 
-          activeType={activeType}
-          onTypeChange={setActiveType}
-        />
+        {/* Убрали onTypeChange */}
+        <CompanyinfoSlider activeType={activeType} />
 
-        <QualityCardholder/>
+        <QualityCardholder />
 
         <div className={styles['companyinfo__actions']}>
           <ActionButton type="application" onClick={handleApplicationClick} />

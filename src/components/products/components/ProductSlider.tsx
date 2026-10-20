@@ -1,6 +1,6 @@
 // src/components/products/components/ProductSlider.tsx
-import React, { useState, useEffect } from 'react';
-import type { Product, ProductType } from '../types/product.types';
+import React, { useState } from 'react';
+import type { ProductType } from '../types/product.types';
 import { products } from '../data/products.data';
 import { PrevArrowIcon, NextArrowIcon } from '../../ui/ArrowIcons';
 import styles from './ProductSlider.module.scss';
@@ -12,16 +12,11 @@ interface ProductSliderProps {
 
 const ProductSlider: React.FC<ProductSliderProps> = ({ activeType: externalActiveType, onTypeChange }) => {
   const [internalActiveType, setInternalActiveType] = useState<ProductType>('Стандарт');
-  // Используем внешний activeType если он передан, иначе внутренний
   const activeType = externalActiveType || internalActiveType;
-  // Получаем все уникальные типы продуктов
   const productTypes: ProductType[] = ['Стандарт', 'Бизнес', 'Премиум', 'Эксклюзив'];
-  // Находим текущий индекс типа
   const currentTypeIndex = productTypes.findIndex(type => type === activeType);
-  // Получаем продукт текущего типа (первый продукт этого типа)
   const currentProduct = products.find(product => product.type === activeType) || products[0];
 
-  // Функция для переключения на предыдущий тип
   const goToPrevType = () => {
     const newIndex = currentTypeIndex === 0 ? productTypes.length - 1 : currentTypeIndex - 1;
     const newType = productTypes[newIndex];
@@ -32,7 +27,6 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ activeType: externalActiv
     }
   };
 
-  // Функция для переключения на следующий тип
   const goToNextType = () => {
     const newIndex = currentTypeIndex === productTypes.length - 1 ? 0 : currentTypeIndex + 1;
     const newType = productTypes[newIndex];
@@ -40,16 +34,6 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ activeType: externalActiv
       onTypeChange(newType);
     } else {
       setInternalActiveType(newType);
-    }
-  };
-
-  const getTypeClass = (type: ProductType): string => {
-    switch (type) {
-      case 'Стандарт': return styles['type-standard'];
-      case 'Бизнес': return styles['type-business'];
-      case 'Премиум': return styles['type-premium'];
-      case 'Эксклюзив': return styles['type-exclusive'];
-      default: return '';
     }
   };
 

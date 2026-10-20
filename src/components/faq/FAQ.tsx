@@ -1,7 +1,6 @@
 // src/components/faq/FAQ.tsx
 import React, { useState } from 'react';
 import FAQItem from './components/FAQItem';
-import type { FAQItem as FAQItemType } from './types/faq.types';
 import { faqData } from './data/faq.data';
 import styles from './FAQ.module.scss';
 

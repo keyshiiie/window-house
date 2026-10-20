@@ -1,4 +1,4 @@
-// src/components/certificates/components/CertificatesSlider.tsx
+// src/components/companyinfo/components/sliderCard/CertificateCard/components/CertificatesSlider.tsx
 import React, { useState, useEffect } from 'react';
 import { PrevArrowIcon, NextArrowIcon } from '../../../../../ui/ArrowIcons';
 import type { Certificate } from '../types/certificates.types';
@@ -15,7 +15,6 @@ const CertificatesSlider: React.FC<CertificatesSliderProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   
-  // Определяем ширину экрана
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -27,12 +26,9 @@ const CertificatesSlider: React.FC<CertificatesSliderProps> = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   
-  // На мобилках: 1 сертификат, на планшетах/десктопе: 5 сертификатов
   const itemsPerPage = isMobile ? 1 : 5;
   const totalPages = Math.ceil(certificates.length / itemsPerPage);
   
-  // Для десктопа - пагинация страницами
-  // Для мобилок - индексы для свайпа
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
@@ -56,7 +52,6 @@ const CertificatesSlider: React.FC<CertificatesSliderProps> = ({
     setCurrentIndex(index);
   };
 
-  // Обработчики свайпов
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
   };
@@ -94,7 +89,6 @@ const CertificatesSlider: React.FC<CertificatesSliderProps> = ({
   };
 
   const currentCertificates = getCurrentCertificates();
-  const totalItems = isMobile ? certificates.length : totalPages;
 
   if (!certificates.length) {
     return <div>Нет сертификатов</div>;
@@ -119,7 +113,7 @@ const CertificatesSlider: React.FC<CertificatesSliderProps> = ({
           onTouchMove={isMobile ? handleTouchMove : undefined}
           onTouchEnd={isMobile ? handleTouchEnd : undefined}
         >
-          {currentCertificates.map((certificate, idx) => (
+          {currentCertificates.map((certificate) => (
             <div key={certificate.id} className={styles['certificate-item']}>
               <div className={styles['image-wrapper']}>
                 <img 
@@ -143,7 +137,6 @@ const CertificatesSlider: React.FC<CertificatesSliderProps> = ({
         )}
       </div>
       
-      {/* Доты для мобилок */}
       {isMobile && certificates.length > 1 && (
         <div className={styles['certificates-slider__dots']}>
           {certificates.map((_, index) => (
